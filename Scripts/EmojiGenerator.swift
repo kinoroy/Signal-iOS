@@ -29,23 +29,77 @@ class EmojiGenerator {
 
     static let emojiDirectory = URL(fileURLWithPath: "../Signal/src/util/Emoji", isDirectory: true, relativeTo: pathToFolderContainingThisScript!)
 
-    enum EmojiCategory: String, Codable, Equatable {
-        case smileys = "Smileys & Emotion"
-        case people = "People & Body"
+    enum EmojiCategory: Int, Codable, Equatable {
+        
+        /**
+         "0": "smileys-emotion",
+         "1": "people-body",
+         "2": "component",
+         "3": "animals-nature",
+         "4": "food-drink",
+         "5": "travel-places",
+         "6": "activities",
+         "7": "objects",
+         "8": "symbols",
+         "9": "flags"
+         */
+        case smileys = 0
+        case people
+        case components
+        case animals
+        case food
+        case travel
+        case activities
+        case objects
+        case symbols
+        case flags
+        
+        case smileysAndPeople
+        
+        var name: String {
+            switch self {
+            case .smileys:
+                return "Smileys & Emotion"
+            case .people:
+                return "People & Body"
+            case .components:
+                return "Component"
+            case .animals:
+                return "Animals & Nature"
+            case .food:
+                return "Food & Drink"
+            case .travel:
+                return "Travel & Places"
+            case .activities:
+                return "Activities"
+            case .objects:
+                return "Objects"
+            case .symbols:
+                return "Symbols"
+            case .flags:
+                return "Flags"
+            case .smileysAndPeople:
+                return "Smileys & People"
+            }
+        }
+        
+        //case skinTones
+        /**case smileys = "Smileys & Emotion"
+         case people = "People & Body"
 
-        // This category is not provided in the data set, but is actually
-        // a merger of the categories of `smileys` and `people`
-        case smileysAndPeople = "Smileys & People"
+         // This category is not provided in the data set, but is actually
+         // a merger of the categories of `smileys` and `people`
+         case smileysAndPeople = "Smileys & People"
 
-        case animals = "Animals & Nature"
-        case food = "Food & Drink"
-        case activities = "Activities"
-        case travel = "Travel & Places"
-        case objects = "Objects"
-        case symbols = "Symbols"
-        case flags = "Flags"
-        case skinTones = "Skin Tones"
-        case components = "Component"
+         case animals = "Animals & Nature"
+         case food = "Food & Drink"
+         case activities = "Activities"
+         case travel = "Travel & Places"
+         case objects = "Objects"
+         case symbols = "Symbols"
+         case flags = "Flags"
+         case skinTones = "Skin Tones"
+         case components = "Component"*/
     }
 
     enum SkinTone: String, CaseIterable, Equatable {
@@ -81,49 +135,88 @@ class EmojiGenerator {
     }
 
     struct EmojiData: Codable {
-        let name: String?
-        let shortName: String
-        let unified: String
-        let sortOrder: UInt
-        let category: EmojiCategory
-        let skinVariations: [String: SkinVariation]?
-
+        let annotation: String
+        let hexcode: String
+        var order: UInt!
+        let emoji: String
+        let group: EmojiCategory!
+        let skins: [EmojiData]?
+        let tone: [Int]
+        let tags: [String]
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: EmojiData.CodingKeys.self)
+            annotation = try container.decode(String.self, forKey: .annotation)
+            hexcode = try container.decode(String.self, forKey: .hexcode)
+            order = try container.decodeIfPresent(UInt.self, forKey: .order)
+            emoji = try container.decode(String.self, forKey: .emoji)
+            group = try container.decodeIfPresent(EmojiCategory.self, forKey: .group)
+            skins = try container.decodeIfPresent([EmojiData].self, forKey: .skins)
+            if let tone = try? container.decode(Int.self, forKey: .tone) {
+                self.tone = [tone]
+            } else if let tones = try? container.decode([Int].self, forKey: .tone) {
+                tone = tones
+            } else {
+                tone = []
+            }
+            tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+        }
+        
+        var shortName: String {
+            return annotation.replacingOccurrences(of: " ", with: "-")
+        }
         var enumName: String {
             // some names don't play nice with swift, so we special case them
             switch shortName {
-            case "+1": return "plusOne"
-            case "-1": return "negativeOne"
-            case "8ball": return "eightBall"
-            case "repeat": return "`repeat`"
-            case "100": return "oneHundred"
-            case "1234": return "oneTwoThreeFour"
-            case "couplekiss": return "personKissPerson"
-            case "couple": return "womanAndManHoldingHands"
-            case "couple_with_heart": return "personHeartPerson"
+            case "1st-place-medal": return "firstPlaceMedal"
+            case "2nd-place-medal": return "secondPlaceMedal"
+            case "3rd-place-medal": return "thirdPlaceMedal"
+            case "guard": return "`guard`"
             default:
-                let uppperCamelCase = shortName.replacingOccurrences(of: "-", with: "_").components(separatedBy: "_").map(titlecase).joined(separator: "")
+                let uppperCamelCase = shortName
+                    .filter { !["’", ".", "!"].contains($0) }
+                    .replacingOccurrences(of: "#", with: "_pound_symbol_")
+                    .replacingOccurrences(of: "*", with: "_asterisk_")
+                    .replacingOccurrences(of: "&", with: "_and_")
+                    .replacingOccurrences(of: ",", with: "_")
+                    .replacingOccurrences(of: "“", with: "_")
+                    .replacingOccurrences(of: "”", with: "_")
+                    .replacingOccurrences(of: "(", with: "_")
+                    .replacingOccurrences(of: ")", with: "_")
+                    .replacingOccurrences(of: ":", with: "_")
+                    .replacingOccurrences(of: "-", with: "_")
+                    .components(separatedBy: "_").map(titlecase)
+                    .joined(separator: "")
                 return String(uppperCamelCase.unicodeScalars.first!).lowercased() + String(uppperCamelCase.unicodeScalars.dropFirst())
             }
         }
 
-        var emoji: String {
-            let unicodeComponents = unified.components(separatedBy: "-").map { Int($0, radix: 16)! }
+        /*var emoji: String {
+            let unicodeComponents = hexcode.components(separatedBy: "-").map { Int($0, radix: 16)! }
             return unicodeComponents.map { String(UnicodeScalar($0)!) }.joined()
-        }
+        }*/
 
-        var hasSkinVariations: Bool { skinVariations?.isEmpty == false }
+        var hasSkinVariations: Bool { skins?.isEmpty == false }
         var emojiPerSkinTone: [[SkinTone]: String]? {
-            guard let skinVariations = skinVariations else { return nil }
+            guard let skins = skins else { return nil }
             var emojiPerSkinTone = [[SkinTone]: String]()
-            for (key, value) in skinVariations {
-                let skinTones = key
-                    .components(separatedBy: "-")
-                    .map { SkinTone(rawValue: $0)! }
+            for skin in skins {
+                let tones: [Int] = {
+                    if let tone = skin.tone as? Int {
+                        return [tone]
+                    } else if let tones = skin.tone as? [Int] {
+                        return tones
+                    }
+                    return []
+                }()
+                let skinTones = tones
+                    .map { tone in SkinTone.allCases.filter { ($0.sortId + 1) == tone }.first! }
+                    .map { SkinTone(rawValue: $0.rawValue)! }
                     .reduce(into: [SkinTone]()) { result, skinTone in
                         guard !result.contains(skinTone) else { return }
                         result.append(skinTone)
                     }
-                emojiPerSkinTone[skinTones] = value.emoji
+                emojiPerSkinTone[skinTones] = skin.emoji
             }
             return emojiPerSkinTone
         }
@@ -175,7 +268,7 @@ class EmojiGenerator {
     }
 
     static func generate() {
-        guard let jsonData = try? Data(contentsOf: URL(string: "https://unicodey.com/emoji-data/emoji.json")!) else {
+        guard let jsonData = try? Data(contentsOf: URL(string: "https://cdn.jsdelivr.net/npm/emojibase-data@6.2.0/en/data.json")!) else {
             fatalError("Failed to download emoji-data json")
         }
 
@@ -183,8 +276,9 @@ class EmojiGenerator {
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
 
         let sortedEmojiData = try! jsonDecoder.decode([EmojiData].self, from: jsonData)
-            .sorted { $0.sortOrder < $1.sortOrder }
-            .filter { $0.category != .skinTones } // for now, we don't care about skin tones
+            .filter { $0.order != nil && $0.group != nil }
+            .sorted { $0.order < $1.order }
+            //.filter { $0.category != .skinTones } // for now, we don't care about skin tones
 
         // Main enum
         writeBlock(fileName: "Emoji.swift") { fileHandle in
@@ -304,7 +398,7 @@ class EmojiGenerator {
             // Start Category enum
             fileHandle.writeLine("    enum Category: String, CaseIterable, Equatable {")
             for category in outputCategories {
-                fileHandle.writeLine("        case \(category) = \"\(category.rawValue)\"")
+                fileHandle.writeLine("        case \(category) = \"\(category.name)\"")
             }
 
             fileHandle.writeLine("")
@@ -316,7 +410,7 @@ class EmojiGenerator {
             for category in outputCategories {
                 fileHandle.writeLine("            case .\(category):")
                 fileHandle.writeLine("                return NSLocalizedString(\"EMOJI_CATEGORY_\("\(category)".uppercased())_NAME\",")
-                fileHandle.writeLine("                                         comment: \"The name for the emoji category '\(category.rawValue)'\")")
+                fileHandle.writeLine("                                         comment: \"The name for the emoji category '\(category.name)'\")")
             }
 
             fileHandle.writeLine("            }")
@@ -328,9 +422,9 @@ class EmojiGenerator {
             fileHandle.writeLine("            switch self {")
 
             let emojiPerCategory = sortedEmojiData.reduce(into: [EmojiCategory: [EmojiData]]()) { result, emojiData in
-                var categoryList = result[emojiData.category] ?? []
+                var categoryList = result[emojiData.group] ?? []
                 categoryList.append(emojiData)
-                result[emojiData.category] = categoryList
+                result[emojiData.group] = categoryList
             }
 
             for category in outputCategories {
@@ -369,9 +463,9 @@ class EmojiGenerator {
             fileHandle.writeLine("        switch self {")
 
             for emojiData in sortedEmojiData {
-                let category = [.smileys, .people].contains(emojiData.category) ? .smileysAndPeople : emojiData.category
+                let category = [.smileys, .people].contains(emojiData.group) ? .smileysAndPeople : emojiData.group
                 if category != .components {
-                    fileHandle.writeLine("        case .\(emojiData.enumName): return .\(category)")
+                    fileHandle.writeLine("        case .\(emojiData.enumName): return .\(category!)")
                 }
             }
 
@@ -395,8 +489,8 @@ class EmojiGenerator {
             fileHandle.writeLine("        switch self {")
 
             for emojiData in sortedEmojiData {
-                guard let name = emojiData.name else { continue }
-                fileHandle.writeLine("        case .\(emojiData.enumName): return \"\(name)\"")
+                //guard let name = emojiData.annotation else { continue }
+                fileHandle.writeLine("        case .\(emojiData.enumName): return \"\(emojiData.annotation)\"")
             }
 
             fileHandle.writeLine("        default: return nil")
@@ -407,6 +501,38 @@ class EmojiGenerator {
             // End Extension
             fileHandle.writeLine("}")
         }
+        
+        // Tag lookup
+        
+        writeBlock(fileName: "EmojiTags.swift") { fileHandle in
+            // Start Extension
+            fileHandle.writeLine("let emojiTags: [String: [Emoji]] = [")
+            
+            let emojisForTag = sortedEmojiData.reduce(into: [String: [EmojiData]]()) { emojisForTag, emoji in
+                for tag in emoji.tags {
+                    var emojis = emojisForTag[tag] ?? []
+                    emojis.append(emoji)
+                    emojisForTag[tag] = emojis
+                }
+            }
+            /**
+                            [
+             
+             "tag": []
+             ]
+             */
+            for tag in emojisForTag.keys.sorted() {
+                fileHandle.writeLine("\t\"\(tag)\":[")
+                for emoji in emojisForTag[tag] ?? [] {
+                    fileHandle.writeLine("\t.\(emoji.enumName),")
+                }
+                fileHandle.writeLine("\t],")
+            }
+            
+            // End Extension
+            fileHandle.writeLine("\t]")
+        }
+        
     }
 
     static func writeBlock(fileName: String, block: (FileHandle) -> Void) {
@@ -445,3 +571,4 @@ extension FileHandle {
 do {
     EmojiGenerator.generate()
 }
+

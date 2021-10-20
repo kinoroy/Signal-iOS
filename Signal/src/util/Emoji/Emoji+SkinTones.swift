@@ -18,22 +18,19 @@ extension Emoji {
 
     var skinToneComponentEmoji: [Emoji]? {
         switch self {
-        case .peopleHoldingHands: return [.standingPerson, .standingPerson]
-        case .twoWomenHoldingHands: return [.womanStanding, .womanStanding]
-        case .twoMenHoldingHands: return [.manStanding, .manStanding]
         default: return nil
         }
     }
 
     var emojiPerSkinTonePermutation: [[SkinTone]: String]? {
         switch self {
-        case .wave:
+        case .wavingHand:
             return [
                 [.light]: "👋🏻",
                 [.mediumLight]: "👋🏼",
                 [.medium]: "👋🏽",
                 [.mediumDark]: "👋🏾",
-                [.dark]: "👋🏿"
+                [.dark]: "👋🏿",
             ]
         case .raisedBackOfHand:
             return [
@@ -41,39 +38,39 @@ extension Emoji {
                 [.mediumLight]: "🤚🏼",
                 [.medium]: "🤚🏽",
                 [.mediumDark]: "🤚🏾",
-                [.dark]: "🤚🏿"
+                [.dark]: "🤚🏿",
             ]
-        case .raisedHandWithFingersSplayed:
+        case .handWithFingersSplayed:
             return [
                 [.light]: "🖐🏻",
                 [.mediumLight]: "🖐🏼",
                 [.medium]: "🖐🏽",
                 [.mediumDark]: "🖐🏾",
-                [.dark]: "🖐🏿"
+                [.dark]: "🖐🏿",
             ]
-        case .hand:
+        case .raisedHand:
             return [
                 [.light]: "✋🏻",
                 [.mediumLight]: "✋🏼",
                 [.medium]: "✋🏽",
                 [.mediumDark]: "✋🏾",
-                [.dark]: "✋🏿"
+                [.dark]: "✋🏿",
             ]
-        case .spockHand:
+        case .vulcanSalute:
             return [
                 [.light]: "🖖🏻",
                 [.mediumLight]: "🖖🏼",
                 [.medium]: "🖖🏽",
                 [.mediumDark]: "🖖🏾",
-                [.dark]: "🖖🏿"
+                [.dark]: "🖖🏿",
             ]
-        case .okHand:
+        case .oKHand:
             return [
                 [.light]: "👌🏻",
                 [.mediumLight]: "👌🏼",
                 [.medium]: "👌🏽",
                 [.mediumDark]: "👌🏾",
-                [.dark]: "👌🏿"
+                [.dark]: "👌🏿",
             ]
         case .pinchedFingers:
             return [
@@ -81,7 +78,7 @@ extension Emoji {
                 [.mediumLight]: "🤌🏼",
                 [.medium]: "🤌🏽",
                 [.mediumDark]: "🤌🏾",
-                [.dark]: "🤌🏿"
+                [.dark]: "🤌🏿",
             ]
         case .pinchingHand:
             return [
@@ -89,15 +86,15 @@ extension Emoji {
                 [.mediumLight]: "🤏🏼",
                 [.medium]: "🤏🏽",
                 [.mediumDark]: "🤏🏾",
-                [.dark]: "🤏🏿"
+                [.dark]: "🤏🏿",
             ]
-        case .v:
+        case .victoryHand:
             return [
                 [.light]: "✌🏻",
                 [.mediumLight]: "✌🏼",
                 [.medium]: "✌🏽",
                 [.mediumDark]: "✌🏾",
-                [.dark]: "✌🏿"
+                [.dark]: "✌🏿",
             ]
         case .crossedFingers:
             return [
@@ -105,23 +102,23 @@ extension Emoji {
                 [.mediumLight]: "🤞🏼",
                 [.medium]: "🤞🏽",
                 [.mediumDark]: "🤞🏾",
-                [.dark]: "🤞🏿"
+                [.dark]: "🤞🏿",
             ]
-        case .iLoveYouHandSign:
+        case .loveYouGesture:
             return [
                 [.light]: "🤟🏻",
                 [.mediumLight]: "🤟🏼",
                 [.medium]: "🤟🏽",
                 [.mediumDark]: "🤟🏾",
-                [.dark]: "🤟🏿"
+                [.dark]: "🤟🏿",
             ]
-        case .theHorns:
+        case .signOfTheHorns:
             return [
                 [.light]: "🤘🏻",
                 [.mediumLight]: "🤘🏼",
                 [.medium]: "🤘🏽",
                 [.mediumDark]: "🤘🏾",
-                [.dark]: "🤘🏿"
+                [.dark]: "🤘🏿",
             ]
         case .callMeHand:
             return [
@@ -129,31 +126,31 @@ extension Emoji {
                 [.mediumLight]: "🤙🏼",
                 [.medium]: "🤙🏽",
                 [.mediumDark]: "🤙🏾",
-                [.dark]: "🤙🏿"
+                [.dark]: "🤙🏿",
             ]
-        case .pointLeft:
+        case .backhandIndexPointingLeft:
             return [
                 [.light]: "👈🏻",
                 [.mediumLight]: "👈🏼",
                 [.medium]: "👈🏽",
                 [.mediumDark]: "👈🏾",
-                [.dark]: "👈🏿"
+                [.dark]: "👈🏿",
             ]
-        case .pointRight:
+        case .backhandIndexPointingRight:
             return [
                 [.light]: "👉🏻",
                 [.mediumLight]: "👉🏼",
                 [.medium]: "👉🏽",
                 [.mediumDark]: "👉🏾",
-                [.dark]: "👉🏿"
+                [.dark]: "👉🏿",
             ]
-        case .pointUp2:
+        case .backhandIndexPointingUp:
             return [
                 [.light]: "👆🏻",
                 [.mediumLight]: "👆🏼",
                 [.medium]: "👆🏽",
                 [.mediumDark]: "👆🏾",
-                [.dark]: "👆🏿"
+                [.dark]: "👆🏿",
             ]
         case .middleFinger:
             return [
@@ -161,55 +158,55 @@ extension Emoji {
                 [.mediumLight]: "🖕🏼",
                 [.medium]: "🖕🏽",
                 [.mediumDark]: "🖕🏾",
-                [.dark]: "🖕🏿"
+                [.dark]: "🖕🏿",
             ]
-        case .pointDown:
+        case .backhandIndexPointingDown:
             return [
                 [.light]: "👇🏻",
                 [.mediumLight]: "👇🏼",
                 [.medium]: "👇🏽",
                 [.mediumDark]: "👇🏾",
-                [.dark]: "👇🏿"
+                [.dark]: "👇🏿",
             ]
-        case .pointUp:
+        case .indexPointingUp:
             return [
                 [.light]: "☝🏻",
                 [.mediumLight]: "☝🏼",
                 [.medium]: "☝🏽",
                 [.mediumDark]: "☝🏾",
-                [.dark]: "☝🏿"
+                [.dark]: "☝🏿",
             ]
-        case .plusOne:
+        case .thumbsUp:
             return [
                 [.light]: "👍🏻",
                 [.mediumLight]: "👍🏼",
                 [.medium]: "👍🏽",
                 [.mediumDark]: "👍🏾",
-                [.dark]: "👍🏿"
+                [.dark]: "👍🏿",
             ]
-        case .negativeOne:
+        case .thumbsDown:
             return [
                 [.light]: "👎🏻",
                 [.mediumLight]: "👎🏼",
                 [.medium]: "👎🏽",
                 [.mediumDark]: "👎🏾",
-                [.dark]: "👎🏿"
+                [.dark]: "👎🏿",
             ]
-        case .fist:
+        case .raisedFist:
             return [
                 [.light]: "✊🏻",
                 [.mediumLight]: "✊🏼",
                 [.medium]: "✊🏽",
                 [.mediumDark]: "✊🏾",
-                [.dark]: "✊🏿"
+                [.dark]: "✊🏿",
             ]
-        case .facepunch:
+        case .oncomingFist:
             return [
                 [.light]: "👊🏻",
                 [.mediumLight]: "👊🏼",
                 [.medium]: "👊🏽",
                 [.mediumDark]: "👊🏾",
-                [.dark]: "👊🏿"
+                [.dark]: "👊🏿",
             ]
         case .leftFacingFist:
             return [
@@ -217,7 +214,7 @@ extension Emoji {
                 [.mediumLight]: "🤛🏼",
                 [.medium]: "🤛🏽",
                 [.mediumDark]: "🤛🏾",
-                [.dark]: "🤛🏿"
+                [.dark]: "🤛🏿",
             ]
         case .rightFacingFist:
             return [
@@ -225,23 +222,23 @@ extension Emoji {
                 [.mediumLight]: "🤜🏼",
                 [.medium]: "🤜🏽",
                 [.mediumDark]: "🤜🏾",
-                [.dark]: "🤜🏿"
+                [.dark]: "🤜🏿",
             ]
-        case .clap:
+        case .clappingHands:
             return [
                 [.light]: "👏🏻",
                 [.mediumLight]: "👏🏼",
                 [.medium]: "👏🏽",
                 [.mediumDark]: "👏🏾",
-                [.dark]: "👏🏿"
+                [.dark]: "👏🏿",
             ]
-        case .raisedHands:
+        case .raisingHands:
             return [
                 [.light]: "🙌🏻",
                 [.mediumLight]: "🙌🏼",
                 [.medium]: "🙌🏽",
                 [.mediumDark]: "🙌🏾",
-                [.dark]: "🙌🏿"
+                [.dark]: "🙌🏿",
             ]
         case .openHands:
             return [
@@ -249,7 +246,7 @@ extension Emoji {
                 [.mediumLight]: "👐🏼",
                 [.medium]: "👐🏽",
                 [.mediumDark]: "👐🏾",
-                [.dark]: "👐🏿"
+                [.dark]: "👐🏿",
             ]
         case .palmsUpTogether:
             return [
@@ -257,15 +254,15 @@ extension Emoji {
                 [.mediumLight]: "🤲🏼",
                 [.medium]: "🤲🏽",
                 [.mediumDark]: "🤲🏾",
-                [.dark]: "🤲🏿"
+                [.dark]: "🤲🏿",
             ]
-        case .pray:
+        case .foldedHands:
             return [
                 [.light]: "🙏🏻",
                 [.mediumLight]: "🙏🏼",
                 [.medium]: "🙏🏽",
                 [.mediumDark]: "🙏🏾",
-                [.dark]: "🙏🏿"
+                [.dark]: "🙏🏿",
             ]
         case .writingHand:
             return [
@@ -273,15 +270,15 @@ extension Emoji {
                 [.mediumLight]: "✍🏼",
                 [.medium]: "✍🏽",
                 [.mediumDark]: "✍🏾",
-                [.dark]: "✍🏿"
+                [.dark]: "✍🏿",
             ]
-        case .nailCare:
+        case .nailPolish:
             return [
                 [.light]: "💅🏻",
                 [.mediumLight]: "💅🏼",
                 [.medium]: "💅🏽",
                 [.mediumDark]: "💅🏾",
-                [.dark]: "💅🏿"
+                [.dark]: "💅🏿",
             ]
         case .selfie:
             return [
@@ -289,15 +286,15 @@ extension Emoji {
                 [.mediumLight]: "🤳🏼",
                 [.medium]: "🤳🏽",
                 [.mediumDark]: "🤳🏾",
-                [.dark]: "🤳🏿"
+                [.dark]: "🤳🏿",
             ]
-        case .muscle:
+        case .flexedBiceps:
             return [
                 [.light]: "💪🏻",
                 [.mediumLight]: "💪🏼",
                 [.medium]: "💪🏽",
                 [.mediumDark]: "💪🏾",
-                [.dark]: "💪🏿"
+                [.dark]: "💪🏿",
             ]
         case .leg:
             return [
@@ -305,7 +302,7 @@ extension Emoji {
                 [.mediumLight]: "🦵🏼",
                 [.medium]: "🦵🏽",
                 [.mediumDark]: "🦵🏾",
-                [.dark]: "🦵🏿"
+                [.dark]: "🦵🏿",
             ]
         case .foot:
             return [
@@ -313,7 +310,7 @@ extension Emoji {
                 [.mediumLight]: "🦶🏼",
                 [.medium]: "🦶🏽",
                 [.mediumDark]: "🦶🏾",
-                [.dark]: "🦶🏿"
+                [.dark]: "🦶🏿",
             ]
         case .ear:
             return [
@@ -321,7 +318,7 @@ extension Emoji {
                 [.mediumLight]: "👂🏼",
                 [.medium]: "👂🏽",
                 [.mediumDark]: "👂🏾",
-                [.dark]: "👂🏿"
+                [.dark]: "👂🏿",
             ]
         case .earWithHearingAid:
             return [
@@ -329,7 +326,7 @@ extension Emoji {
                 [.mediumLight]: "🦻🏼",
                 [.medium]: "🦻🏽",
                 [.mediumDark]: "🦻🏾",
-                [.dark]: "🦻🏿"
+                [.dark]: "🦻🏿",
             ]
         case .nose:
             return [
@@ -337,7 +334,7 @@ extension Emoji {
                 [.mediumLight]: "👃🏼",
                 [.medium]: "👃🏽",
                 [.mediumDark]: "👃🏾",
-                [.dark]: "👃🏿"
+                [.dark]: "👃🏿",
             ]
         case .baby:
             return [
@@ -345,7 +342,7 @@ extension Emoji {
                 [.mediumLight]: "👶🏼",
                 [.medium]: "👶🏽",
                 [.mediumDark]: "👶🏾",
-                [.dark]: "👶🏿"
+                [.dark]: "👶🏿",
             ]
         case .child:
             return [
@@ -353,7 +350,7 @@ extension Emoji {
                 [.mediumLight]: "🧒🏼",
                 [.medium]: "🧒🏽",
                 [.mediumDark]: "🧒🏾",
-                [.dark]: "🧒🏿"
+                [.dark]: "🧒🏿",
             ]
         case .boy:
             return [
@@ -361,7 +358,7 @@ extension Emoji {
                 [.mediumLight]: "👦🏼",
                 [.medium]: "👦🏽",
                 [.mediumDark]: "👦🏾",
-                [.dark]: "👦🏿"
+                [.dark]: "👦🏿",
             ]
         case .girl:
             return [
@@ -369,23 +366,23 @@ extension Emoji {
                 [.mediumLight]: "👧🏼",
                 [.medium]: "👧🏽",
                 [.mediumDark]: "👧🏾",
-                [.dark]: "👧🏿"
+                [.dark]: "👧🏿",
             ]
-        case .adult:
+        case .person:
             return [
                 [.light]: "🧑🏻",
                 [.mediumLight]: "🧑🏼",
                 [.medium]: "🧑🏽",
                 [.mediumDark]: "🧑🏾",
-                [.dark]: "🧑🏿"
+                [.dark]: "🧑🏿",
             ]
-        case .personWithBlondHair:
+        case .personBlondHair:
             return [
                 [.light]: "👱🏻",
                 [.mediumLight]: "👱🏼",
                 [.medium]: "👱🏽",
                 [.mediumDark]: "👱🏾",
-                [.dark]: "👱🏿"
+                [.dark]: "👱🏿",
             ]
         case .man:
             return [
@@ -393,63 +390,63 @@ extension Emoji {
                 [.mediumLight]: "👨🏼",
                 [.medium]: "👨🏽",
                 [.mediumDark]: "👨🏾",
-                [.dark]: "👨🏿"
+                [.dark]: "👨🏿",
             ]
-        case .beardedPerson:
+        case .personBeard:
             return [
                 [.light]: "🧔🏻",
                 [.mediumLight]: "🧔🏼",
                 [.medium]: "🧔🏽",
                 [.mediumDark]: "🧔🏾",
-                [.dark]: "🧔🏿"
+                [.dark]: "🧔🏿",
             ]
-        case .manWithBeard:
+        case .manBeard:
             return [
                 [.light]: "🧔🏻‍♂️",
                 [.mediumLight]: "🧔🏼‍♂️",
                 [.medium]: "🧔🏽‍♂️",
                 [.mediumDark]: "🧔🏾‍♂️",
-                [.dark]: "🧔🏿‍♂️"
+                [.dark]: "🧔🏿‍♂️",
             ]
-        case .womanWithBeard:
+        case .womanBeard:
             return [
                 [.light]: "🧔🏻‍♀️",
                 [.mediumLight]: "🧔🏼‍♀️",
                 [.medium]: "🧔🏽‍♀️",
                 [.mediumDark]: "🧔🏾‍♀️",
-                [.dark]: "🧔🏿‍♀️"
+                [.dark]: "🧔🏿‍♀️",
             ]
-        case .redHairedMan:
+        case .manRedHair:
             return [
                 [.light]: "👨🏻‍🦰",
                 [.mediumLight]: "👨🏼‍🦰",
                 [.medium]: "👨🏽‍🦰",
                 [.mediumDark]: "👨🏾‍🦰",
-                [.dark]: "👨🏿‍🦰"
+                [.dark]: "👨🏿‍🦰",
             ]
-        case .curlyHairedMan:
+        case .manCurlyHair:
             return [
                 [.light]: "👨🏻‍🦱",
                 [.mediumLight]: "👨🏼‍🦱",
                 [.medium]: "👨🏽‍🦱",
                 [.mediumDark]: "👨🏾‍🦱",
-                [.dark]: "👨🏿‍🦱"
+                [.dark]: "👨🏿‍🦱",
             ]
-        case .whiteHairedMan:
+        case .manWhiteHair:
             return [
                 [.light]: "👨🏻‍🦳",
                 [.mediumLight]: "👨🏼‍🦳",
                 [.medium]: "👨🏽‍🦳",
                 [.mediumDark]: "👨🏾‍🦳",
-                [.dark]: "👨🏿‍🦳"
+                [.dark]: "👨🏿‍🦳",
             ]
-        case .baldMan:
+        case .manBald:
             return [
                 [.light]: "👨🏻‍🦲",
                 [.mediumLight]: "👨🏼‍🦲",
                 [.medium]: "👨🏽‍🦲",
                 [.mediumDark]: "👨🏾‍🦲",
-                [.dark]: "👨🏿‍🦲"
+                [.dark]: "👨🏿‍🦲",
             ]
         case .woman:
             return [
@@ -457,111 +454,111 @@ extension Emoji {
                 [.mediumLight]: "👩🏼",
                 [.medium]: "👩🏽",
                 [.mediumDark]: "👩🏾",
-                [.dark]: "👩🏿"
+                [.dark]: "👩🏿",
             ]
-        case .redHairedWoman:
+        case .womanRedHair:
             return [
                 [.light]: "👩🏻‍🦰",
                 [.mediumLight]: "👩🏼‍🦰",
                 [.medium]: "👩🏽‍🦰",
                 [.mediumDark]: "👩🏾‍🦰",
-                [.dark]: "👩🏿‍🦰"
+                [.dark]: "👩🏿‍🦰",
             ]
-        case .redHairedPerson:
+        case .personRedHair:
             return [
                 [.light]: "🧑🏻‍🦰",
                 [.mediumLight]: "🧑🏼‍🦰",
                 [.medium]: "🧑🏽‍🦰",
                 [.mediumDark]: "🧑🏾‍🦰",
-                [.dark]: "🧑🏿‍🦰"
+                [.dark]: "🧑🏿‍🦰",
             ]
-        case .curlyHairedWoman:
+        case .womanCurlyHair:
             return [
                 [.light]: "👩🏻‍🦱",
                 [.mediumLight]: "👩🏼‍🦱",
                 [.medium]: "👩🏽‍🦱",
                 [.mediumDark]: "👩🏾‍🦱",
-                [.dark]: "👩🏿‍🦱"
+                [.dark]: "👩🏿‍🦱",
             ]
-        case .curlyHairedPerson:
+        case .personCurlyHair:
             return [
                 [.light]: "🧑🏻‍🦱",
                 [.mediumLight]: "🧑🏼‍🦱",
                 [.medium]: "🧑🏽‍🦱",
                 [.mediumDark]: "🧑🏾‍🦱",
-                [.dark]: "🧑🏿‍🦱"
+                [.dark]: "🧑🏿‍🦱",
             ]
-        case .whiteHairedWoman:
+        case .womanWhiteHair:
             return [
                 [.light]: "👩🏻‍🦳",
                 [.mediumLight]: "👩🏼‍🦳",
                 [.medium]: "👩🏽‍🦳",
                 [.mediumDark]: "👩🏾‍🦳",
-                [.dark]: "👩🏿‍🦳"
+                [.dark]: "👩🏿‍🦳",
             ]
-        case .whiteHairedPerson:
+        case .personWhiteHair:
             return [
                 [.light]: "🧑🏻‍🦳",
                 [.mediumLight]: "🧑🏼‍🦳",
                 [.medium]: "🧑🏽‍🦳",
                 [.mediumDark]: "🧑🏾‍🦳",
-                [.dark]: "🧑🏿‍🦳"
+                [.dark]: "🧑🏿‍🦳",
             ]
-        case .baldWoman:
+        case .womanBald:
             return [
                 [.light]: "👩🏻‍🦲",
                 [.mediumLight]: "👩🏼‍🦲",
                 [.medium]: "👩🏽‍🦲",
                 [.mediumDark]: "👩🏾‍🦲",
-                [.dark]: "👩🏿‍🦲"
+                [.dark]: "👩🏿‍🦲",
             ]
-        case .baldPerson:
+        case .personBald:
             return [
                 [.light]: "🧑🏻‍🦲",
                 [.mediumLight]: "🧑🏼‍🦲",
                 [.medium]: "🧑🏽‍🦲",
                 [.mediumDark]: "🧑🏾‍🦲",
-                [.dark]: "🧑🏿‍🦲"
+                [.dark]: "🧑🏿‍🦲",
             ]
-        case .blondHairedWoman:
+        case .womanBlondHair:
             return [
                 [.light]: "👱🏻‍♀️",
                 [.mediumLight]: "👱🏼‍♀️",
                 [.medium]: "👱🏽‍♀️",
                 [.mediumDark]: "👱🏾‍♀️",
-                [.dark]: "👱🏿‍♀️"
+                [.dark]: "👱🏿‍♀️",
             ]
-        case .blondHairedMan:
+        case .manBlondHair:
             return [
                 [.light]: "👱🏻‍♂️",
                 [.mediumLight]: "👱🏼‍♂️",
                 [.medium]: "👱🏽‍♂️",
                 [.mediumDark]: "👱🏾‍♂️",
-                [.dark]: "👱🏿‍♂️"
+                [.dark]: "👱🏿‍♂️",
             ]
-        case .olderAdult:
+        case .olderPerson:
             return [
                 [.light]: "🧓🏻",
                 [.mediumLight]: "🧓🏼",
                 [.medium]: "🧓🏽",
                 [.mediumDark]: "🧓🏾",
-                [.dark]: "🧓🏿"
+                [.dark]: "🧓🏿",
             ]
-        case .olderMan:
+        case .oldMan:
             return [
                 [.light]: "👴🏻",
                 [.mediumLight]: "👴🏼",
                 [.medium]: "👴🏽",
                 [.mediumDark]: "👴🏾",
-                [.dark]: "👴🏿"
+                [.dark]: "👴🏿",
             ]
-        case .olderWoman:
+        case .oldWoman:
             return [
                 [.light]: "👵🏻",
                 [.mediumLight]: "👵🏼",
                 [.medium]: "👵🏽",
                 [.mediumDark]: "👵🏾",
-                [.dark]: "👵🏿"
+                [.dark]: "👵🏿",
             ]
         case .personFrowning:
             return [
@@ -569,7 +566,7 @@ extension Emoji {
                 [.mediumLight]: "🙍🏼",
                 [.medium]: "🙍🏽",
                 [.mediumDark]: "🙍🏾",
-                [.dark]: "🙍🏿"
+                [.dark]: "🙍🏿",
             ]
         case .manFrowning:
             return [
@@ -577,7 +574,7 @@ extension Emoji {
                 [.mediumLight]: "🙍🏼‍♂️",
                 [.medium]: "🙍🏽‍♂️",
                 [.mediumDark]: "🙍🏾‍♂️",
-                [.dark]: "🙍🏿‍♂️"
+                [.dark]: "🙍🏿‍♂️",
             ]
         case .womanFrowning:
             return [
@@ -585,15 +582,15 @@ extension Emoji {
                 [.mediumLight]: "🙍🏼‍♀️",
                 [.medium]: "🙍🏽‍♀️",
                 [.mediumDark]: "🙍🏾‍♀️",
-                [.dark]: "🙍🏿‍♀️"
+                [.dark]: "🙍🏿‍♀️",
             ]
-        case .personWithPoutingFace:
+        case .personPouting:
             return [
                 [.light]: "🙎🏻",
                 [.mediumLight]: "🙎🏼",
                 [.medium]: "🙎🏽",
                 [.mediumDark]: "🙎🏾",
-                [.dark]: "🙎🏿"
+                [.dark]: "🙎🏿",
             ]
         case .manPouting:
             return [
@@ -601,7 +598,7 @@ extension Emoji {
                 [.mediumLight]: "🙎🏼‍♂️",
                 [.medium]: "🙎🏽‍♂️",
                 [.mediumDark]: "🙎🏾‍♂️",
-                [.dark]: "🙎🏿‍♂️"
+                [.dark]: "🙎🏿‍♂️",
             ]
         case .womanPouting:
             return [
@@ -609,63 +606,63 @@ extension Emoji {
                 [.mediumLight]: "🙎🏼‍♀️",
                 [.medium]: "🙎🏽‍♀️",
                 [.mediumDark]: "🙎🏾‍♀️",
-                [.dark]: "🙎🏿‍♀️"
+                [.dark]: "🙎🏿‍♀️",
             ]
-        case .noGood:
+        case .personGesturingNO:
             return [
                 [.light]: "🙅🏻",
                 [.mediumLight]: "🙅🏼",
                 [.medium]: "🙅🏽",
                 [.mediumDark]: "🙅🏾",
-                [.dark]: "🙅🏿"
+                [.dark]: "🙅🏿",
             ]
-        case .manGesturingNo:
+        case .manGesturingNO:
             return [
                 [.light]: "🙅🏻‍♂️",
                 [.mediumLight]: "🙅🏼‍♂️",
                 [.medium]: "🙅🏽‍♂️",
                 [.mediumDark]: "🙅🏾‍♂️",
-                [.dark]: "🙅🏿‍♂️"
+                [.dark]: "🙅🏿‍♂️",
             ]
-        case .womanGesturingNo:
+        case .womanGesturingNO:
             return [
                 [.light]: "🙅🏻‍♀️",
                 [.mediumLight]: "🙅🏼‍♀️",
                 [.medium]: "🙅🏽‍♀️",
                 [.mediumDark]: "🙅🏾‍♀️",
-                [.dark]: "🙅🏿‍♀️"
+                [.dark]: "🙅🏿‍♀️",
             ]
-        case .okWoman:
+        case .personGesturingOK:
             return [
                 [.light]: "🙆🏻",
                 [.mediumLight]: "🙆🏼",
                 [.medium]: "🙆🏽",
                 [.mediumDark]: "🙆🏾",
-                [.dark]: "🙆🏿"
+                [.dark]: "🙆🏿",
             ]
-        case .manGesturingOk:
+        case .manGesturingOK:
             return [
                 [.light]: "🙆🏻‍♂️",
                 [.mediumLight]: "🙆🏼‍♂️",
                 [.medium]: "🙆🏽‍♂️",
                 [.mediumDark]: "🙆🏾‍♂️",
-                [.dark]: "🙆🏿‍♂️"
+                [.dark]: "🙆🏿‍♂️",
             ]
-        case .womanGesturingOk:
+        case .womanGesturingOK:
             return [
                 [.light]: "🙆🏻‍♀️",
                 [.mediumLight]: "🙆🏼‍♀️",
                 [.medium]: "🙆🏽‍♀️",
                 [.mediumDark]: "🙆🏾‍♀️",
-                [.dark]: "🙆🏿‍♀️"
+                [.dark]: "🙆🏿‍♀️",
             ]
-        case .informationDeskPerson:
+        case .personTippingHand:
             return [
                 [.light]: "💁🏻",
                 [.mediumLight]: "💁🏼",
                 [.medium]: "💁🏽",
                 [.mediumDark]: "💁🏾",
-                [.dark]: "💁🏿"
+                [.dark]: "💁🏿",
             ]
         case .manTippingHand:
             return [
@@ -673,7 +670,7 @@ extension Emoji {
                 [.mediumLight]: "💁🏼‍♂️",
                 [.medium]: "💁🏽‍♂️",
                 [.mediumDark]: "💁🏾‍♂️",
-                [.dark]: "💁🏿‍♂️"
+                [.dark]: "💁🏿‍♂️",
             ]
         case .womanTippingHand:
             return [
@@ -681,15 +678,15 @@ extension Emoji {
                 [.mediumLight]: "💁🏼‍♀️",
                 [.medium]: "💁🏽‍♀️",
                 [.mediumDark]: "💁🏾‍♀️",
-                [.dark]: "💁🏿‍♀️"
+                [.dark]: "💁🏿‍♀️",
             ]
-        case .raisingHand:
+        case .personRaisingHand:
             return [
                 [.light]: "🙋🏻",
                 [.mediumLight]: "🙋🏼",
                 [.medium]: "🙋🏽",
                 [.mediumDark]: "🙋🏾",
-                [.dark]: "🙋🏿"
+                [.dark]: "🙋🏿",
             ]
         case .manRaisingHand:
             return [
@@ -697,7 +694,7 @@ extension Emoji {
                 [.mediumLight]: "🙋🏼‍♂️",
                 [.medium]: "🙋🏽‍♂️",
                 [.mediumDark]: "🙋🏾‍♂️",
-                [.dark]: "🙋🏿‍♂️"
+                [.dark]: "🙋🏿‍♂️",
             ]
         case .womanRaisingHand:
             return [
@@ -705,7 +702,7 @@ extension Emoji {
                 [.mediumLight]: "🙋🏼‍♀️",
                 [.medium]: "🙋🏽‍♀️",
                 [.mediumDark]: "🙋🏾‍♀️",
-                [.dark]: "🙋🏿‍♀️"
+                [.dark]: "🙋🏿‍♀️",
             ]
         case .deafPerson:
             return [
@@ -713,7 +710,7 @@ extension Emoji {
                 [.mediumLight]: "🧏🏼",
                 [.medium]: "🧏🏽",
                 [.mediumDark]: "🧏🏾",
-                [.dark]: "🧏🏿"
+                [.dark]: "🧏🏿",
             ]
         case .deafMan:
             return [
@@ -721,7 +718,7 @@ extension Emoji {
                 [.mediumLight]: "🧏🏼‍♂️",
                 [.medium]: "🧏🏽‍♂️",
                 [.mediumDark]: "🧏🏾‍♂️",
-                [.dark]: "🧏🏿‍♂️"
+                [.dark]: "🧏🏿‍♂️",
             ]
         case .deafWoman:
             return [
@@ -729,15 +726,15 @@ extension Emoji {
                 [.mediumLight]: "🧏🏼‍♀️",
                 [.medium]: "🧏🏽‍♀️",
                 [.mediumDark]: "🧏🏾‍♀️",
-                [.dark]: "🧏🏿‍♀️"
+                [.dark]: "🧏🏿‍♀️",
             ]
-        case .bow:
+        case .personBowing:
             return [
                 [.light]: "🙇🏻",
                 [.mediumLight]: "🙇🏼",
                 [.medium]: "🙇🏽",
                 [.mediumDark]: "🙇🏾",
-                [.dark]: "🙇🏿"
+                [.dark]: "🙇🏿",
             ]
         case .manBowing:
             return [
@@ -745,7 +742,7 @@ extension Emoji {
                 [.mediumLight]: "🙇🏼‍♂️",
                 [.medium]: "🙇🏽‍♂️",
                 [.mediumDark]: "🙇🏾‍♂️",
-                [.dark]: "🙇🏿‍♂️"
+                [.dark]: "🙇🏿‍♂️",
             ]
         case .womanBowing:
             return [
@@ -753,15 +750,15 @@ extension Emoji {
                 [.mediumLight]: "🙇🏼‍♀️",
                 [.medium]: "🙇🏽‍♀️",
                 [.mediumDark]: "🙇🏾‍♀️",
-                [.dark]: "🙇🏿‍♀️"
+                [.dark]: "🙇🏿‍♀️",
             ]
-        case .facePalm:
+        case .personFacepalming:
             return [
                 [.light]: "🤦🏻",
                 [.mediumLight]: "🤦🏼",
                 [.medium]: "🤦🏽",
                 [.mediumDark]: "🤦🏾",
-                [.dark]: "🤦🏿"
+                [.dark]: "🤦🏿",
             ]
         case .manFacepalming:
             return [
@@ -769,7 +766,7 @@ extension Emoji {
                 [.mediumLight]: "🤦🏼‍♂️",
                 [.medium]: "🤦🏽‍♂️",
                 [.mediumDark]: "🤦🏾‍♂️",
-                [.dark]: "🤦🏿‍♂️"
+                [.dark]: "🤦🏿‍♂️",
             ]
         case .womanFacepalming:
             return [
@@ -777,15 +774,15 @@ extension Emoji {
                 [.mediumLight]: "🤦🏼‍♀️",
                 [.medium]: "🤦🏽‍♀️",
                 [.mediumDark]: "🤦🏾‍♀️",
-                [.dark]: "🤦🏿‍♀️"
+                [.dark]: "🤦🏿‍♀️",
             ]
-        case .shrug:
+        case .personShrugging:
             return [
                 [.light]: "🤷🏻",
                 [.mediumLight]: "🤷🏼",
                 [.medium]: "🤷🏽",
                 [.mediumDark]: "🤷🏾",
-                [.dark]: "🤷🏿"
+                [.dark]: "🤷🏿",
             ]
         case .manShrugging:
             return [
@@ -793,7 +790,7 @@ extension Emoji {
                 [.mediumLight]: "🤷🏼‍♂️",
                 [.medium]: "🤷🏽‍♂️",
                 [.mediumDark]: "🤷🏾‍♂️",
-                [.dark]: "🤷🏿‍♂️"
+                [.dark]: "🤷🏿‍♂️",
             ]
         case .womanShrugging:
             return [
@@ -801,7 +798,7 @@ extension Emoji {
                 [.mediumLight]: "🤷🏼‍♀️",
                 [.medium]: "🤷🏽‍♀️",
                 [.mediumDark]: "🤷🏾‍♀️",
-                [.dark]: "🤷🏿‍♀️"
+                [.dark]: "🤷🏿‍♀️",
             ]
         case .healthWorker:
             return [
@@ -809,23 +806,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍⚕️",
                 [.medium]: "🧑🏽‍⚕️",
                 [.mediumDark]: "🧑🏾‍⚕️",
-                [.dark]: "🧑🏿‍⚕️"
+                [.dark]: "🧑🏿‍⚕️",
             ]
-        case .maleDoctor:
+        case .manHealthWorker:
             return [
                 [.light]: "👨🏻‍⚕️",
                 [.mediumLight]: "👨🏼‍⚕️",
                 [.medium]: "👨🏽‍⚕️",
                 [.mediumDark]: "👨🏾‍⚕️",
-                [.dark]: "👨🏿‍⚕️"
+                [.dark]: "👨🏿‍⚕️",
             ]
-        case .femaleDoctor:
+        case .womanHealthWorker:
             return [
                 [.light]: "👩🏻‍⚕️",
                 [.mediumLight]: "👩🏼‍⚕️",
                 [.medium]: "👩🏽‍⚕️",
                 [.mediumDark]: "👩🏾‍⚕️",
-                [.dark]: "👩🏿‍⚕️"
+                [.dark]: "👩🏿‍⚕️",
             ]
         case .student:
             return [
@@ -833,23 +830,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🎓",
                 [.medium]: "🧑🏽‍🎓",
                 [.mediumDark]: "🧑🏾‍🎓",
-                [.dark]: "🧑🏿‍🎓"
+                [.dark]: "🧑🏿‍🎓",
             ]
-        case .maleStudent:
+        case .manStudent:
             return [
                 [.light]: "👨🏻‍🎓",
                 [.mediumLight]: "👨🏼‍🎓",
                 [.medium]: "👨🏽‍🎓",
                 [.mediumDark]: "👨🏾‍🎓",
-                [.dark]: "👨🏿‍🎓"
+                [.dark]: "👨🏿‍🎓",
             ]
-        case .femaleStudent:
+        case .womanStudent:
             return [
                 [.light]: "👩🏻‍🎓",
                 [.mediumLight]: "👩🏼‍🎓",
                 [.medium]: "👩🏽‍🎓",
                 [.mediumDark]: "👩🏾‍🎓",
-                [.dark]: "👩🏿‍🎓"
+                [.dark]: "👩🏿‍🎓",
             ]
         case .teacher:
             return [
@@ -857,23 +854,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🏫",
                 [.medium]: "🧑🏽‍🏫",
                 [.mediumDark]: "🧑🏾‍🏫",
-                [.dark]: "🧑🏿‍🏫"
+                [.dark]: "🧑🏿‍🏫",
             ]
-        case .maleTeacher:
+        case .manTeacher:
             return [
                 [.light]: "👨🏻‍🏫",
                 [.mediumLight]: "👨🏼‍🏫",
                 [.medium]: "👨🏽‍🏫",
                 [.mediumDark]: "👨🏾‍🏫",
-                [.dark]: "👨🏿‍🏫"
+                [.dark]: "👨🏿‍🏫",
             ]
-        case .femaleTeacher:
+        case .womanTeacher:
             return [
                 [.light]: "👩🏻‍🏫",
                 [.mediumLight]: "👩🏼‍🏫",
                 [.medium]: "👩🏽‍🏫",
                 [.mediumDark]: "👩🏾‍🏫",
-                [.dark]: "👩🏿‍🏫"
+                [.dark]: "👩🏿‍🏫",
             ]
         case .judge:
             return [
@@ -881,23 +878,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍⚖️",
                 [.medium]: "🧑🏽‍⚖️",
                 [.mediumDark]: "🧑🏾‍⚖️",
-                [.dark]: "🧑🏿‍⚖️"
+                [.dark]: "🧑🏿‍⚖️",
             ]
-        case .maleJudge:
+        case .manJudge:
             return [
                 [.light]: "👨🏻‍⚖️",
                 [.mediumLight]: "👨🏼‍⚖️",
                 [.medium]: "👨🏽‍⚖️",
                 [.mediumDark]: "👨🏾‍⚖️",
-                [.dark]: "👨🏿‍⚖️"
+                [.dark]: "👨🏿‍⚖️",
             ]
-        case .femaleJudge:
+        case .womanJudge:
             return [
                 [.light]: "👩🏻‍⚖️",
                 [.mediumLight]: "👩🏼‍⚖️",
                 [.medium]: "👩🏽‍⚖️",
                 [.mediumDark]: "👩🏾‍⚖️",
-                [.dark]: "👩🏿‍⚖️"
+                [.dark]: "👩🏿‍⚖️",
             ]
         case .farmer:
             return [
@@ -905,23 +902,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🌾",
                 [.medium]: "🧑🏽‍🌾",
                 [.mediumDark]: "🧑🏾‍🌾",
-                [.dark]: "🧑🏿‍🌾"
+                [.dark]: "🧑🏿‍🌾",
             ]
-        case .maleFarmer:
+        case .manFarmer:
             return [
                 [.light]: "👨🏻‍🌾",
                 [.mediumLight]: "👨🏼‍🌾",
                 [.medium]: "👨🏽‍🌾",
                 [.mediumDark]: "👨🏾‍🌾",
-                [.dark]: "👨🏿‍🌾"
+                [.dark]: "👨🏿‍🌾",
             ]
-        case .femaleFarmer:
+        case .womanFarmer:
             return [
                 [.light]: "👩🏻‍🌾",
                 [.mediumLight]: "👩🏼‍🌾",
                 [.medium]: "👩🏽‍🌾",
                 [.mediumDark]: "👩🏾‍🌾",
-                [.dark]: "👩🏿‍🌾"
+                [.dark]: "👩🏿‍🌾",
             ]
         case .cook:
             return [
@@ -929,23 +926,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🍳",
                 [.medium]: "🧑🏽‍🍳",
                 [.mediumDark]: "🧑🏾‍🍳",
-                [.dark]: "🧑🏿‍🍳"
+                [.dark]: "🧑🏿‍🍳",
             ]
-        case .maleCook:
+        case .manCook:
             return [
                 [.light]: "👨🏻‍🍳",
                 [.mediumLight]: "👨🏼‍🍳",
                 [.medium]: "👨🏽‍🍳",
                 [.mediumDark]: "👨🏾‍🍳",
-                [.dark]: "👨🏿‍🍳"
+                [.dark]: "👨🏿‍🍳",
             ]
-        case .femaleCook:
+        case .womanCook:
             return [
                 [.light]: "👩🏻‍🍳",
                 [.mediumLight]: "👩🏼‍🍳",
                 [.medium]: "👩🏽‍🍳",
                 [.mediumDark]: "👩🏾‍🍳",
-                [.dark]: "👩🏿‍🍳"
+                [.dark]: "👩🏿‍🍳",
             ]
         case .mechanic:
             return [
@@ -953,23 +950,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🔧",
                 [.medium]: "🧑🏽‍🔧",
                 [.mediumDark]: "🧑🏾‍🔧",
-                [.dark]: "🧑🏿‍🔧"
+                [.dark]: "🧑🏿‍🔧",
             ]
-        case .maleMechanic:
+        case .manMechanic:
             return [
                 [.light]: "👨🏻‍🔧",
                 [.mediumLight]: "👨🏼‍🔧",
                 [.medium]: "👨🏽‍🔧",
                 [.mediumDark]: "👨🏾‍🔧",
-                [.dark]: "👨🏿‍🔧"
+                [.dark]: "👨🏿‍🔧",
             ]
-        case .femaleMechanic:
+        case .womanMechanic:
             return [
                 [.light]: "👩🏻‍🔧",
                 [.mediumLight]: "👩🏼‍🔧",
                 [.medium]: "👩🏽‍🔧",
                 [.mediumDark]: "👩🏾‍🔧",
-                [.dark]: "👩🏿‍🔧"
+                [.dark]: "👩🏿‍🔧",
             ]
         case .factoryWorker:
             return [
@@ -977,23 +974,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🏭",
                 [.medium]: "🧑🏽‍🏭",
                 [.mediumDark]: "🧑🏾‍🏭",
-                [.dark]: "🧑🏿‍🏭"
+                [.dark]: "🧑🏿‍🏭",
             ]
-        case .maleFactoryWorker:
+        case .manFactoryWorker:
             return [
                 [.light]: "👨🏻‍🏭",
                 [.mediumLight]: "👨🏼‍🏭",
                 [.medium]: "👨🏽‍🏭",
                 [.mediumDark]: "👨🏾‍🏭",
-                [.dark]: "👨🏿‍🏭"
+                [.dark]: "👨🏿‍🏭",
             ]
-        case .femaleFactoryWorker:
+        case .womanFactoryWorker:
             return [
                 [.light]: "👩🏻‍🏭",
                 [.mediumLight]: "👩🏼‍🏭",
                 [.medium]: "👩🏽‍🏭",
                 [.mediumDark]: "👩🏾‍🏭",
-                [.dark]: "👩🏿‍🏭"
+                [.dark]: "👩🏿‍🏭",
             ]
         case .officeWorker:
             return [
@@ -1001,23 +998,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍💼",
                 [.medium]: "🧑🏽‍💼",
                 [.mediumDark]: "🧑🏾‍💼",
-                [.dark]: "🧑🏿‍💼"
+                [.dark]: "🧑🏿‍💼",
             ]
-        case .maleOfficeWorker:
+        case .manOfficeWorker:
             return [
                 [.light]: "👨🏻‍💼",
                 [.mediumLight]: "👨🏼‍💼",
                 [.medium]: "👨🏽‍💼",
                 [.mediumDark]: "👨🏾‍💼",
-                [.dark]: "👨🏿‍💼"
+                [.dark]: "👨🏿‍💼",
             ]
-        case .femaleOfficeWorker:
+        case .womanOfficeWorker:
             return [
                 [.light]: "👩🏻‍💼",
                 [.mediumLight]: "👩🏼‍💼",
                 [.medium]: "👩🏽‍💼",
                 [.mediumDark]: "👩🏾‍💼",
-                [.dark]: "👩🏿‍💼"
+                [.dark]: "👩🏿‍💼",
             ]
         case .scientist:
             return [
@@ -1025,23 +1022,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🔬",
                 [.medium]: "🧑🏽‍🔬",
                 [.mediumDark]: "🧑🏾‍🔬",
-                [.dark]: "🧑🏿‍🔬"
+                [.dark]: "🧑🏿‍🔬",
             ]
-        case .maleScientist:
+        case .manScientist:
             return [
                 [.light]: "👨🏻‍🔬",
                 [.mediumLight]: "👨🏼‍🔬",
                 [.medium]: "👨🏽‍🔬",
                 [.mediumDark]: "👨🏾‍🔬",
-                [.dark]: "👨🏿‍🔬"
+                [.dark]: "👨🏿‍🔬",
             ]
-        case .femaleScientist:
+        case .womanScientist:
             return [
                 [.light]: "👩🏻‍🔬",
                 [.mediumLight]: "👩🏼‍🔬",
                 [.medium]: "👩🏽‍🔬",
                 [.mediumDark]: "👩🏾‍🔬",
-                [.dark]: "👩🏿‍🔬"
+                [.dark]: "👩🏿‍🔬",
             ]
         case .technologist:
             return [
@@ -1049,23 +1046,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍💻",
                 [.medium]: "🧑🏽‍💻",
                 [.mediumDark]: "🧑🏾‍💻",
-                [.dark]: "🧑🏿‍💻"
+                [.dark]: "🧑🏿‍💻",
             ]
-        case .maleTechnologist:
+        case .manTechnologist:
             return [
                 [.light]: "👨🏻‍💻",
                 [.mediumLight]: "👨🏼‍💻",
                 [.medium]: "👨🏽‍💻",
                 [.mediumDark]: "👨🏾‍💻",
-                [.dark]: "👨🏿‍💻"
+                [.dark]: "👨🏿‍💻",
             ]
-        case .femaleTechnologist:
+        case .womanTechnologist:
             return [
                 [.light]: "👩🏻‍💻",
                 [.mediumLight]: "👩🏼‍💻",
                 [.medium]: "👩🏽‍💻",
                 [.mediumDark]: "👩🏾‍💻",
-                [.dark]: "👩🏿‍💻"
+                [.dark]: "👩🏿‍💻",
             ]
         case .singer:
             return [
@@ -1073,23 +1070,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🎤",
                 [.medium]: "🧑🏽‍🎤",
                 [.mediumDark]: "🧑🏾‍🎤",
-                [.dark]: "🧑🏿‍🎤"
+                [.dark]: "🧑🏿‍🎤",
             ]
-        case .maleSinger:
+        case .manSinger:
             return [
                 [.light]: "👨🏻‍🎤",
                 [.mediumLight]: "👨🏼‍🎤",
                 [.medium]: "👨🏽‍🎤",
                 [.mediumDark]: "👨🏾‍🎤",
-                [.dark]: "👨🏿‍🎤"
+                [.dark]: "👨🏿‍🎤",
             ]
-        case .femaleSinger:
+        case .womanSinger:
             return [
                 [.light]: "👩🏻‍🎤",
                 [.mediumLight]: "👩🏼‍🎤",
                 [.medium]: "👩🏽‍🎤",
                 [.mediumDark]: "👩🏾‍🎤",
-                [.dark]: "👩🏿‍🎤"
+                [.dark]: "👩🏿‍🎤",
             ]
         case .artist:
             return [
@@ -1097,23 +1094,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🎨",
                 [.medium]: "🧑🏽‍🎨",
                 [.mediumDark]: "🧑🏾‍🎨",
-                [.dark]: "🧑🏿‍🎨"
+                [.dark]: "🧑🏿‍🎨",
             ]
-        case .maleArtist:
+        case .manArtist:
             return [
                 [.light]: "👨🏻‍🎨",
                 [.mediumLight]: "👨🏼‍🎨",
                 [.medium]: "👨🏽‍🎨",
                 [.mediumDark]: "👨🏾‍🎨",
-                [.dark]: "👨🏿‍🎨"
+                [.dark]: "👨🏿‍🎨",
             ]
-        case .femaleArtist:
+        case .womanArtist:
             return [
                 [.light]: "👩🏻‍🎨",
                 [.mediumLight]: "👩🏼‍🎨",
                 [.medium]: "👩🏽‍🎨",
                 [.mediumDark]: "👩🏾‍🎨",
-                [.dark]: "👩🏿‍🎨"
+                [.dark]: "👩🏿‍🎨",
             ]
         case .pilot:
             return [
@@ -1121,23 +1118,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍✈️",
                 [.medium]: "🧑🏽‍✈️",
                 [.mediumDark]: "🧑🏾‍✈️",
-                [.dark]: "🧑🏿‍✈️"
+                [.dark]: "🧑🏿‍✈️",
             ]
-        case .malePilot:
+        case .manPilot:
             return [
                 [.light]: "👨🏻‍✈️",
                 [.mediumLight]: "👨🏼‍✈️",
                 [.medium]: "👨🏽‍✈️",
                 [.mediumDark]: "👨🏾‍✈️",
-                [.dark]: "👨🏿‍✈️"
+                [.dark]: "👨🏿‍✈️",
             ]
-        case .femalePilot:
+        case .womanPilot:
             return [
                 [.light]: "👩🏻‍✈️",
                 [.mediumLight]: "👩🏼‍✈️",
                 [.medium]: "👩🏽‍✈️",
                 [.mediumDark]: "👩🏾‍✈️",
-                [.dark]: "👩🏿‍✈️"
+                [.dark]: "👩🏿‍✈️",
             ]
         case .astronaut:
             return [
@@ -1145,23 +1142,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🚀",
                 [.medium]: "🧑🏽‍🚀",
                 [.mediumDark]: "🧑🏾‍🚀",
-                [.dark]: "🧑🏿‍🚀"
+                [.dark]: "🧑🏿‍🚀",
             ]
-        case .maleAstronaut:
+        case .manAstronaut:
             return [
                 [.light]: "👨🏻‍🚀",
                 [.mediumLight]: "👨🏼‍🚀",
                 [.medium]: "👨🏽‍🚀",
                 [.mediumDark]: "👨🏾‍🚀",
-                [.dark]: "👨🏿‍🚀"
+                [.dark]: "👨🏿‍🚀",
             ]
-        case .femaleAstronaut:
+        case .womanAstronaut:
             return [
                 [.light]: "👩🏻‍🚀",
                 [.mediumLight]: "👩🏼‍🚀",
                 [.medium]: "👩🏽‍🚀",
                 [.mediumDark]: "👩🏾‍🚀",
-                [.dark]: "👩🏿‍🚀"
+                [.dark]: "👩🏿‍🚀",
             ]
         case .firefighter:
             return [
@@ -1169,95 +1166,95 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🚒",
                 [.medium]: "🧑🏽‍🚒",
                 [.mediumDark]: "🧑🏾‍🚒",
-                [.dark]: "🧑🏿‍🚒"
+                [.dark]: "🧑🏿‍🚒",
             ]
-        case .maleFirefighter:
+        case .manFirefighter:
             return [
                 [.light]: "👨🏻‍🚒",
                 [.mediumLight]: "👨🏼‍🚒",
                 [.medium]: "👨🏽‍🚒",
                 [.mediumDark]: "👨🏾‍🚒",
-                [.dark]: "👨🏿‍🚒"
+                [.dark]: "👨🏿‍🚒",
             ]
-        case .femaleFirefighter:
+        case .womanFirefighter:
             return [
                 [.light]: "👩🏻‍🚒",
                 [.mediumLight]: "👩🏼‍🚒",
                 [.medium]: "👩🏽‍🚒",
                 [.mediumDark]: "👩🏾‍🚒",
-                [.dark]: "👩🏿‍🚒"
+                [.dark]: "👩🏿‍🚒",
             ]
-        case .cop:
+        case .policeOfficer:
             return [
                 [.light]: "👮🏻",
                 [.mediumLight]: "👮🏼",
                 [.medium]: "👮🏽",
                 [.mediumDark]: "👮🏾",
-                [.dark]: "👮🏿"
+                [.dark]: "👮🏿",
             ]
-        case .malePoliceOfficer:
+        case .manPoliceOfficer:
             return [
                 [.light]: "👮🏻‍♂️",
                 [.mediumLight]: "👮🏼‍♂️",
                 [.medium]: "👮🏽‍♂️",
                 [.mediumDark]: "👮🏾‍♂️",
-                [.dark]: "👮🏿‍♂️"
+                [.dark]: "👮🏿‍♂️",
             ]
-        case .femalePoliceOfficer:
+        case .womanPoliceOfficer:
             return [
                 [.light]: "👮🏻‍♀️",
                 [.mediumLight]: "👮🏼‍♀️",
                 [.medium]: "👮🏽‍♀️",
                 [.mediumDark]: "👮🏾‍♀️",
-                [.dark]: "👮🏿‍♀️"
+                [.dark]: "👮🏿‍♀️",
             ]
-        case .sleuthOrSpy:
+        case .detective:
             return [
                 [.light]: "🕵🏻",
                 [.mediumLight]: "🕵🏼",
                 [.medium]: "🕵🏽",
                 [.mediumDark]: "🕵🏾",
-                [.dark]: "🕵🏿"
+                [.dark]: "🕵🏿",
             ]
-        case .maleDetective:
+        case .manDetective:
             return [
                 [.light]: "🕵🏻‍♂️",
                 [.mediumLight]: "🕵🏼‍♂️",
                 [.medium]: "🕵🏽‍♂️",
                 [.mediumDark]: "🕵🏾‍♂️",
-                [.dark]: "🕵🏿‍♂️"
+                [.dark]: "🕵🏿‍♂️",
             ]
-        case .femaleDetective:
+        case .womanDetective:
             return [
                 [.light]: "🕵🏻‍♀️",
                 [.mediumLight]: "🕵🏼‍♀️",
                 [.medium]: "🕵🏽‍♀️",
                 [.mediumDark]: "🕵🏾‍♀️",
-                [.dark]: "🕵🏿‍♀️"
+                [.dark]: "🕵🏿‍♀️",
             ]
-        case .guardsman:
+        case .`guard`:
             return [
                 [.light]: "💂🏻",
                 [.mediumLight]: "💂🏼",
                 [.medium]: "💂🏽",
                 [.mediumDark]: "💂🏾",
-                [.dark]: "💂🏿"
+                [.dark]: "💂🏿",
             ]
-        case .maleGuard:
+        case .manGuard:
             return [
                 [.light]: "💂🏻‍♂️",
                 [.mediumLight]: "💂🏼‍♂️",
                 [.medium]: "💂🏽‍♂️",
                 [.mediumDark]: "💂🏾‍♂️",
-                [.dark]: "💂🏿‍♂️"
+                [.dark]: "💂🏿‍♂️",
             ]
-        case .femaleGuard:
+        case .womanGuard:
             return [
                 [.light]: "💂🏻‍♀️",
                 [.mediumLight]: "💂🏼‍♀️",
                 [.medium]: "💂🏽‍♀️",
                 [.mediumDark]: "💂🏾‍♀️",
-                [.dark]: "💂🏿‍♀️"
+                [.dark]: "💂🏿‍♀️",
             ]
         case .ninja:
             return [
@@ -1265,7 +1262,7 @@ extension Emoji {
                 [.mediumLight]: "🥷🏼",
                 [.medium]: "🥷🏽",
                 [.mediumDark]: "🥷🏾",
-                [.dark]: "🥷🏿"
+                [.dark]: "🥷🏿",
             ]
         case .constructionWorker:
             return [
@@ -1273,23 +1270,23 @@ extension Emoji {
                 [.mediumLight]: "👷🏼",
                 [.medium]: "👷🏽",
                 [.mediumDark]: "👷🏾",
-                [.dark]: "👷🏿"
+                [.dark]: "👷🏿",
             ]
-        case .maleConstructionWorker:
+        case .manConstructionWorker:
             return [
                 [.light]: "👷🏻‍♂️",
                 [.mediumLight]: "👷🏼‍♂️",
                 [.medium]: "👷🏽‍♂️",
                 [.mediumDark]: "👷🏾‍♂️",
-                [.dark]: "👷🏿‍♂️"
+                [.dark]: "👷🏿‍♂️",
             ]
-        case .femaleConstructionWorker:
+        case .womanConstructionWorker:
             return [
                 [.light]: "👷🏻‍♀️",
                 [.mediumLight]: "👷🏼‍♀️",
                 [.medium]: "👷🏽‍♀️",
                 [.mediumDark]: "👷🏾‍♀️",
-                [.dark]: "👷🏿‍♀️"
+                [.dark]: "👷🏿‍♀️",
             ]
         case .prince:
             return [
@@ -1297,7 +1294,7 @@ extension Emoji {
                 [.mediumLight]: "🤴🏼",
                 [.medium]: "🤴🏽",
                 [.mediumDark]: "🤴🏾",
-                [.dark]: "🤴🏿"
+                [.dark]: "🤴🏿",
             ]
         case .princess:
             return [
@@ -1305,15 +1302,15 @@ extension Emoji {
                 [.mediumLight]: "👸🏼",
                 [.medium]: "👸🏽",
                 [.mediumDark]: "👸🏾",
-                [.dark]: "👸🏿"
+                [.dark]: "👸🏿",
             ]
-        case .manWithTurban:
+        case .personWearingTurban:
             return [
                 [.light]: "👳🏻",
                 [.mediumLight]: "👳🏼",
                 [.medium]: "👳🏽",
                 [.mediumDark]: "👳🏾",
-                [.dark]: "👳🏿"
+                [.dark]: "👳🏿",
             ]
         case .manWearingTurban:
             return [
@@ -1321,7 +1318,7 @@ extension Emoji {
                 [.mediumLight]: "👳🏼‍♂️",
                 [.medium]: "👳🏽‍♂️",
                 [.mediumDark]: "👳🏾‍♂️",
-                [.dark]: "👳🏿‍♂️"
+                [.dark]: "👳🏿‍♂️",
             ]
         case .womanWearingTurban:
             return [
@@ -1329,23 +1326,23 @@ extension Emoji {
                 [.mediumLight]: "👳🏼‍♀️",
                 [.medium]: "👳🏽‍♀️",
                 [.mediumDark]: "👳🏾‍♀️",
-                [.dark]: "👳🏿‍♀️"
+                [.dark]: "👳🏿‍♀️",
             ]
-        case .manWithGuaPiMao:
+        case .personWithSkullcap:
             return [
                 [.light]: "👲🏻",
                 [.mediumLight]: "👲🏼",
                 [.medium]: "👲🏽",
                 [.mediumDark]: "👲🏾",
-                [.dark]: "👲🏿"
+                [.dark]: "👲🏿",
             ]
-        case .personWithHeadscarf:
+        case .womanWithHeadscarf:
             return [
                 [.light]: "🧕🏻",
                 [.mediumLight]: "🧕🏼",
                 [.medium]: "🧕🏽",
                 [.mediumDark]: "🧕🏾",
-                [.dark]: "🧕🏿"
+                [.dark]: "🧕🏿",
             ]
         case .personInTuxedo:
             return [
@@ -1353,7 +1350,7 @@ extension Emoji {
                 [.mediumLight]: "🤵🏼",
                 [.medium]: "🤵🏽",
                 [.mediumDark]: "🤵🏾",
-                [.dark]: "🤵🏿"
+                [.dark]: "🤵🏿",
             ]
         case .manInTuxedo:
             return [
@@ -1361,7 +1358,7 @@ extension Emoji {
                 [.mediumLight]: "🤵🏼‍♂️",
                 [.medium]: "🤵🏽‍♂️",
                 [.mediumDark]: "🤵🏾‍♂️",
-                [.dark]: "🤵🏿‍♂️"
+                [.dark]: "🤵🏿‍♂️",
             ]
         case .womanInTuxedo:
             return [
@@ -1369,15 +1366,15 @@ extension Emoji {
                 [.mediumLight]: "🤵🏼‍♀️",
                 [.medium]: "🤵🏽‍♀️",
                 [.mediumDark]: "🤵🏾‍♀️",
-                [.dark]: "🤵🏿‍♀️"
+                [.dark]: "🤵🏿‍♀️",
             ]
-        case .brideWithVeil:
+        case .personWithVeil:
             return [
                 [.light]: "👰🏻",
                 [.mediumLight]: "👰🏼",
                 [.medium]: "👰🏽",
                 [.mediumDark]: "👰🏾",
-                [.dark]: "👰🏿"
+                [.dark]: "👰🏿",
             ]
         case .manWithVeil:
             return [
@@ -1385,7 +1382,7 @@ extension Emoji {
                 [.mediumLight]: "👰🏼‍♂️",
                 [.medium]: "👰🏽‍♂️",
                 [.mediumDark]: "👰🏾‍♂️",
-                [.dark]: "👰🏿‍♂️"
+                [.dark]: "👰🏿‍♂️",
             ]
         case .womanWithVeil:
             return [
@@ -1393,7 +1390,7 @@ extension Emoji {
                 [.mediumLight]: "👰🏼‍♀️",
                 [.medium]: "👰🏽‍♀️",
                 [.mediumDark]: "👰🏾‍♀️",
-                [.dark]: "👰🏿‍♀️"
+                [.dark]: "👰🏿‍♀️",
             ]
         case .pregnantWoman:
             return [
@@ -1401,7 +1398,7 @@ extension Emoji {
                 [.mediumLight]: "🤰🏼",
                 [.medium]: "🤰🏽",
                 [.mediumDark]: "🤰🏾",
-                [.dark]: "🤰🏿"
+                [.dark]: "🤰🏿",
             ]
         case .breastFeeding:
             return [
@@ -1409,7 +1406,7 @@ extension Emoji {
                 [.mediumLight]: "🤱🏼",
                 [.medium]: "🤱🏽",
                 [.mediumDark]: "🤱🏾",
-                [.dark]: "🤱🏿"
+                [.dark]: "🤱🏿",
             ]
         case .womanFeedingBaby:
             return [
@@ -1417,7 +1414,7 @@ extension Emoji {
                 [.mediumLight]: "👩🏼‍🍼",
                 [.medium]: "👩🏽‍🍼",
                 [.mediumDark]: "👩🏾‍🍼",
-                [.dark]: "👩🏿‍🍼"
+                [.dark]: "👩🏿‍🍼",
             ]
         case .manFeedingBaby:
             return [
@@ -1425,7 +1422,7 @@ extension Emoji {
                 [.mediumLight]: "👨🏼‍🍼",
                 [.medium]: "👨🏽‍🍼",
                 [.mediumDark]: "👨🏾‍🍼",
-                [.dark]: "👨🏿‍🍼"
+                [.dark]: "👨🏿‍🍼",
             ]
         case .personFeedingBaby:
             return [
@@ -1433,23 +1430,23 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🍼",
                 [.medium]: "🧑🏽‍🍼",
                 [.mediumDark]: "🧑🏾‍🍼",
-                [.dark]: "🧑🏿‍🍼"
+                [.dark]: "🧑🏿‍🍼",
             ]
-        case .angel:
+        case .babyAngel:
             return [
                 [.light]: "👼🏻",
                 [.mediumLight]: "👼🏼",
                 [.medium]: "👼🏽",
                 [.mediumDark]: "👼🏾",
-                [.dark]: "👼🏿"
+                [.dark]: "👼🏿",
             ]
-        case .santa:
+        case .santaClaus:
             return [
                 [.light]: "🎅🏻",
                 [.mediumLight]: "🎅🏼",
                 [.medium]: "🎅🏽",
                 [.mediumDark]: "🎅🏾",
-                [.dark]: "🎅🏿"
+                [.dark]: "🎅🏿",
             ]
         case .mrsClaus:
             return [
@@ -1457,7 +1454,7 @@ extension Emoji {
                 [.mediumLight]: "🤶🏼",
                 [.medium]: "🤶🏽",
                 [.mediumDark]: "🤶🏾",
-                [.dark]: "🤶🏿"
+                [.dark]: "🤶🏿",
             ]
         case .mxClaus:
             return [
@@ -1465,7 +1462,7 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🎄",
                 [.medium]: "🧑🏽‍🎄",
                 [.mediumDark]: "🧑🏾‍🎄",
-                [.dark]: "🧑🏿‍🎄"
+                [.dark]: "🧑🏿‍🎄",
             ]
         case .superhero:
             return [
@@ -1473,23 +1470,23 @@ extension Emoji {
                 [.mediumLight]: "🦸🏼",
                 [.medium]: "🦸🏽",
                 [.mediumDark]: "🦸🏾",
-                [.dark]: "🦸🏿"
+                [.dark]: "🦸🏿",
             ]
-        case .maleSuperhero:
+        case .manSuperhero:
             return [
                 [.light]: "🦸🏻‍♂️",
                 [.mediumLight]: "🦸🏼‍♂️",
                 [.medium]: "🦸🏽‍♂️",
                 [.mediumDark]: "🦸🏾‍♂️",
-                [.dark]: "🦸🏿‍♂️"
+                [.dark]: "🦸🏿‍♂️",
             ]
-        case .femaleSuperhero:
+        case .womanSuperhero:
             return [
                 [.light]: "🦸🏻‍♀️",
                 [.mediumLight]: "🦸🏼‍♀️",
                 [.medium]: "🦸🏽‍♀️",
                 [.mediumDark]: "🦸🏾‍♀️",
-                [.dark]: "🦸🏿‍♀️"
+                [.dark]: "🦸🏿‍♀️",
             ]
         case .supervillain:
             return [
@@ -1497,23 +1494,23 @@ extension Emoji {
                 [.mediumLight]: "🦹🏼",
                 [.medium]: "🦹🏽",
                 [.mediumDark]: "🦹🏾",
-                [.dark]: "🦹🏿"
+                [.dark]: "🦹🏿",
             ]
-        case .maleSupervillain:
+        case .manSupervillain:
             return [
                 [.light]: "🦹🏻‍♂️",
                 [.mediumLight]: "🦹🏼‍♂️",
                 [.medium]: "🦹🏽‍♂️",
                 [.mediumDark]: "🦹🏾‍♂️",
-                [.dark]: "🦹🏿‍♂️"
+                [.dark]: "🦹🏿‍♂️",
             ]
-        case .femaleSupervillain:
+        case .womanSupervillain:
             return [
                 [.light]: "🦹🏻‍♀️",
                 [.mediumLight]: "🦹🏼‍♀️",
                 [.medium]: "🦹🏽‍♀️",
                 [.mediumDark]: "🦹🏾‍♀️",
-                [.dark]: "🦹🏿‍♀️"
+                [.dark]: "🦹🏿‍♀️",
             ]
         case .mage:
             return [
@@ -1521,23 +1518,23 @@ extension Emoji {
                 [.mediumLight]: "🧙🏼",
                 [.medium]: "🧙🏽",
                 [.mediumDark]: "🧙🏾",
-                [.dark]: "🧙🏿"
+                [.dark]: "🧙🏿",
             ]
-        case .maleMage:
+        case .manMage:
             return [
                 [.light]: "🧙🏻‍♂️",
                 [.mediumLight]: "🧙🏼‍♂️",
                 [.medium]: "🧙🏽‍♂️",
                 [.mediumDark]: "🧙🏾‍♂️",
-                [.dark]: "🧙🏿‍♂️"
+                [.dark]: "🧙🏿‍♂️",
             ]
-        case .femaleMage:
+        case .womanMage:
             return [
                 [.light]: "🧙🏻‍♀️",
                 [.mediumLight]: "🧙🏼‍♀️",
                 [.medium]: "🧙🏽‍♀️",
                 [.mediumDark]: "🧙🏾‍♀️",
-                [.dark]: "🧙🏿‍♀️"
+                [.dark]: "🧙🏿‍♀️",
             ]
         case .fairy:
             return [
@@ -1545,23 +1542,23 @@ extension Emoji {
                 [.mediumLight]: "🧚🏼",
                 [.medium]: "🧚🏽",
                 [.mediumDark]: "🧚🏾",
-                [.dark]: "🧚🏿"
+                [.dark]: "🧚🏿",
             ]
-        case .maleFairy:
+        case .manFairy:
             return [
                 [.light]: "🧚🏻‍♂️",
                 [.mediumLight]: "🧚🏼‍♂️",
                 [.medium]: "🧚🏽‍♂️",
                 [.mediumDark]: "🧚🏾‍♂️",
-                [.dark]: "🧚🏿‍♂️"
+                [.dark]: "🧚🏿‍♂️",
             ]
-        case .femaleFairy:
+        case .womanFairy:
             return [
                 [.light]: "🧚🏻‍♀️",
                 [.mediumLight]: "🧚🏼‍♀️",
                 [.medium]: "🧚🏽‍♀️",
                 [.mediumDark]: "🧚🏾‍♀️",
-                [.dark]: "🧚🏿‍♀️"
+                [.dark]: "🧚🏿‍♀️",
             ]
         case .vampire:
             return [
@@ -1569,23 +1566,23 @@ extension Emoji {
                 [.mediumLight]: "🧛🏼",
                 [.medium]: "🧛🏽",
                 [.mediumDark]: "🧛🏾",
-                [.dark]: "🧛🏿"
+                [.dark]: "🧛🏿",
             ]
-        case .maleVampire:
+        case .manVampire:
             return [
                 [.light]: "🧛🏻‍♂️",
                 [.mediumLight]: "🧛🏼‍♂️",
                 [.medium]: "🧛🏽‍♂️",
                 [.mediumDark]: "🧛🏾‍♂️",
-                [.dark]: "🧛🏿‍♂️"
+                [.dark]: "🧛🏿‍♂️",
             ]
-        case .femaleVampire:
+        case .womanVampire:
             return [
                 [.light]: "🧛🏻‍♀️",
                 [.mediumLight]: "🧛🏼‍♀️",
                 [.medium]: "🧛🏽‍♀️",
                 [.mediumDark]: "🧛🏾‍♀️",
-                [.dark]: "🧛🏿‍♀️"
+                [.dark]: "🧛🏿‍♀️",
             ]
         case .merperson:
             return [
@@ -1593,7 +1590,7 @@ extension Emoji {
                 [.mediumLight]: "🧜🏼",
                 [.medium]: "🧜🏽",
                 [.mediumDark]: "🧜🏾",
-                [.dark]: "🧜🏿"
+                [.dark]: "🧜🏿",
             ]
         case .merman:
             return [
@@ -1601,7 +1598,7 @@ extension Emoji {
                 [.mediumLight]: "🧜🏼‍♂️",
                 [.medium]: "🧜🏽‍♂️",
                 [.mediumDark]: "🧜🏾‍♂️",
-                [.dark]: "🧜🏿‍♂️"
+                [.dark]: "🧜🏿‍♂️",
             ]
         case .mermaid:
             return [
@@ -1609,7 +1606,7 @@ extension Emoji {
                 [.mediumLight]: "🧜🏼‍♀️",
                 [.medium]: "🧜🏽‍♀️",
                 [.mediumDark]: "🧜🏾‍♀️",
-                [.dark]: "🧜🏿‍♀️"
+                [.dark]: "🧜🏿‍♀️",
             ]
         case .elf:
             return [
@@ -1617,31 +1614,31 @@ extension Emoji {
                 [.mediumLight]: "🧝🏼",
                 [.medium]: "🧝🏽",
                 [.mediumDark]: "🧝🏾",
-                [.dark]: "🧝🏿"
+                [.dark]: "🧝🏿",
             ]
-        case .maleElf:
+        case .manElf:
             return [
                 [.light]: "🧝🏻‍♂️",
                 [.mediumLight]: "🧝🏼‍♂️",
                 [.medium]: "🧝🏽‍♂️",
                 [.mediumDark]: "🧝🏾‍♂️",
-                [.dark]: "🧝🏿‍♂️"
+                [.dark]: "🧝🏿‍♂️",
             ]
-        case .femaleElf:
+        case .womanElf:
             return [
                 [.light]: "🧝🏻‍♀️",
                 [.mediumLight]: "🧝🏼‍♀️",
                 [.medium]: "🧝🏽‍♀️",
                 [.mediumDark]: "🧝🏾‍♀️",
-                [.dark]: "🧝🏿‍♀️"
+                [.dark]: "🧝🏿‍♀️",
             ]
-        case .massage:
+        case .personGettingMassage:
             return [
                 [.light]: "💆🏻",
                 [.mediumLight]: "💆🏼",
                 [.medium]: "💆🏽",
                 [.mediumDark]: "💆🏾",
-                [.dark]: "💆🏿"
+                [.dark]: "💆🏿",
             ]
         case .manGettingMassage:
             return [
@@ -1649,7 +1646,7 @@ extension Emoji {
                 [.mediumLight]: "💆🏼‍♂️",
                 [.medium]: "💆🏽‍♂️",
                 [.mediumDark]: "💆🏾‍♂️",
-                [.dark]: "💆🏿‍♂️"
+                [.dark]: "💆🏿‍♂️",
             ]
         case .womanGettingMassage:
             return [
@@ -1657,15 +1654,15 @@ extension Emoji {
                 [.mediumLight]: "💆🏼‍♀️",
                 [.medium]: "💆🏽‍♀️",
                 [.mediumDark]: "💆🏾‍♀️",
-                [.dark]: "💆🏿‍♀️"
+                [.dark]: "💆🏿‍♀️",
             ]
-        case .haircut:
+        case .personGettingHaircut:
             return [
                 [.light]: "💇🏻",
                 [.mediumLight]: "💇🏼",
                 [.medium]: "💇🏽",
                 [.mediumDark]: "💇🏾",
-                [.dark]: "💇🏿"
+                [.dark]: "💇🏿",
             ]
         case .manGettingHaircut:
             return [
@@ -1673,7 +1670,7 @@ extension Emoji {
                 [.mediumLight]: "💇🏼‍♂️",
                 [.medium]: "💇🏽‍♂️",
                 [.mediumDark]: "💇🏾‍♂️",
-                [.dark]: "💇🏿‍♂️"
+                [.dark]: "💇🏿‍♂️",
             ]
         case .womanGettingHaircut:
             return [
@@ -1681,15 +1678,15 @@ extension Emoji {
                 [.mediumLight]: "💇🏼‍♀️",
                 [.medium]: "💇🏽‍♀️",
                 [.mediumDark]: "💇🏾‍♀️",
-                [.dark]: "💇🏿‍♀️"
+                [.dark]: "💇🏿‍♀️",
             ]
-        case .walking:
+        case .personWalking:
             return [
                 [.light]: "🚶🏻",
                 [.mediumLight]: "🚶🏼",
                 [.medium]: "🚶🏽",
                 [.mediumDark]: "🚶🏾",
-                [.dark]: "🚶🏿"
+                [.dark]: "🚶🏿",
             ]
         case .manWalking:
             return [
@@ -1697,7 +1694,7 @@ extension Emoji {
                 [.mediumLight]: "🚶🏼‍♂️",
                 [.medium]: "🚶🏽‍♂️",
                 [.mediumDark]: "🚶🏾‍♂️",
-                [.dark]: "🚶🏿‍♂️"
+                [.dark]: "🚶🏿‍♂️",
             ]
         case .womanWalking:
             return [
@@ -1705,15 +1702,15 @@ extension Emoji {
                 [.mediumLight]: "🚶🏼‍♀️",
                 [.medium]: "🚶🏽‍♀️",
                 [.mediumDark]: "🚶🏾‍♀️",
-                [.dark]: "🚶🏿‍♀️"
+                [.dark]: "🚶🏿‍♀️",
             ]
-        case .standingPerson:
+        case .personStanding:
             return [
                 [.light]: "🧍🏻",
                 [.mediumLight]: "🧍🏼",
                 [.medium]: "🧍🏽",
                 [.mediumDark]: "🧍🏾",
-                [.dark]: "🧍🏿"
+                [.dark]: "🧍🏿",
             ]
         case .manStanding:
             return [
@@ -1721,7 +1718,7 @@ extension Emoji {
                 [.mediumLight]: "🧍🏼‍♂️",
                 [.medium]: "🧍🏽‍♂️",
                 [.mediumDark]: "🧍🏾‍♂️",
-                [.dark]: "🧍🏿‍♂️"
+                [.dark]: "🧍🏿‍♂️",
             ]
         case .womanStanding:
             return [
@@ -1729,15 +1726,15 @@ extension Emoji {
                 [.mediumLight]: "🧍🏼‍♀️",
                 [.medium]: "🧍🏽‍♀️",
                 [.mediumDark]: "🧍🏾‍♀️",
-                [.dark]: "🧍🏿‍♀️"
+                [.dark]: "🧍🏿‍♀️",
             ]
-        case .kneelingPerson:
+        case .personKneeling:
             return [
                 [.light]: "🧎🏻",
                 [.mediumLight]: "🧎🏼",
                 [.medium]: "🧎🏽",
                 [.mediumDark]: "🧎🏾",
-                [.dark]: "🧎🏿"
+                [.dark]: "🧎🏿",
             ]
         case .manKneeling:
             return [
@@ -1745,7 +1742,7 @@ extension Emoji {
                 [.mediumLight]: "🧎🏼‍♂️",
                 [.medium]: "🧎🏽‍♂️",
                 [.mediumDark]: "🧎🏾‍♂️",
-                [.dark]: "🧎🏿‍♂️"
+                [.dark]: "🧎🏿‍♂️",
             ]
         case .womanKneeling:
             return [
@@ -1753,31 +1750,31 @@ extension Emoji {
                 [.mediumLight]: "🧎🏼‍♀️",
                 [.medium]: "🧎🏽‍♀️",
                 [.mediumDark]: "🧎🏾‍♀️",
-                [.dark]: "🧎🏿‍♀️"
+                [.dark]: "🧎🏿‍♀️",
             ]
-        case .personWithProbingCane:
+        case .personWithWhiteCane:
             return [
                 [.light]: "🧑🏻‍🦯",
                 [.mediumLight]: "🧑🏼‍🦯",
                 [.medium]: "🧑🏽‍🦯",
                 [.mediumDark]: "🧑🏾‍🦯",
-                [.dark]: "🧑🏿‍🦯"
+                [.dark]: "🧑🏿‍🦯",
             ]
-        case .manWithProbingCane:
+        case .manWithWhiteCane:
             return [
                 [.light]: "👨🏻‍🦯",
                 [.mediumLight]: "👨🏼‍🦯",
                 [.medium]: "👨🏽‍🦯",
                 [.mediumDark]: "👨🏾‍🦯",
-                [.dark]: "👨🏿‍🦯"
+                [.dark]: "👨🏿‍🦯",
             ]
-        case .womanWithProbingCane:
+        case .womanWithWhiteCane:
             return [
                 [.light]: "👩🏻‍🦯",
                 [.mediumLight]: "👩🏼‍🦯",
                 [.medium]: "👩🏽‍🦯",
                 [.mediumDark]: "👩🏾‍🦯",
-                [.dark]: "👩🏿‍🦯"
+                [.dark]: "👩🏿‍🦯",
             ]
         case .personInMotorizedWheelchair:
             return [
@@ -1785,7 +1782,7 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🦼",
                 [.medium]: "🧑🏽‍🦼",
                 [.mediumDark]: "🧑🏾‍🦼",
-                [.dark]: "🧑🏿‍🦼"
+                [.dark]: "🧑🏿‍🦼",
             ]
         case .manInMotorizedWheelchair:
             return [
@@ -1793,7 +1790,7 @@ extension Emoji {
                 [.mediumLight]: "👨🏼‍🦼",
                 [.medium]: "👨🏽‍🦼",
                 [.mediumDark]: "👨🏾‍🦼",
-                [.dark]: "👨🏿‍🦼"
+                [.dark]: "👨🏿‍🦼",
             ]
         case .womanInMotorizedWheelchair:
             return [
@@ -1801,7 +1798,7 @@ extension Emoji {
                 [.mediumLight]: "👩🏼‍🦼",
                 [.medium]: "👩🏽‍🦼",
                 [.mediumDark]: "👩🏾‍🦼",
-                [.dark]: "👩🏿‍🦼"
+                [.dark]: "👩🏿‍🦼",
             ]
         case .personInManualWheelchair:
             return [
@@ -1809,7 +1806,7 @@ extension Emoji {
                 [.mediumLight]: "🧑🏼‍🦽",
                 [.medium]: "🧑🏽‍🦽",
                 [.mediumDark]: "🧑🏾‍🦽",
-                [.dark]: "🧑🏿‍🦽"
+                [.dark]: "🧑🏿‍🦽",
             ]
         case .manInManualWheelchair:
             return [
@@ -1817,7 +1814,7 @@ extension Emoji {
                 [.mediumLight]: "👨🏼‍🦽",
                 [.medium]: "👨🏽‍🦽",
                 [.mediumDark]: "👨🏾‍🦽",
-                [.dark]: "👨🏿‍🦽"
+                [.dark]: "👨🏿‍🦽",
             ]
         case .womanInManualWheelchair:
             return [
@@ -1825,15 +1822,15 @@ extension Emoji {
                 [.mediumLight]: "👩🏼‍🦽",
                 [.medium]: "👩🏽‍🦽",
                 [.mediumDark]: "👩🏾‍🦽",
-                [.dark]: "👩🏿‍🦽"
+                [.dark]: "👩🏿‍🦽",
             ]
-        case .runner:
+        case .personRunning:
             return [
                 [.light]: "🏃🏻",
                 [.mediumLight]: "🏃🏼",
                 [.medium]: "🏃🏽",
                 [.mediumDark]: "🏃🏾",
-                [.dark]: "🏃🏿"
+                [.dark]: "🏃🏿",
             ]
         case .manRunning:
             return [
@@ -1841,7 +1838,7 @@ extension Emoji {
                 [.mediumLight]: "🏃🏼‍♂️",
                 [.medium]: "🏃🏽‍♂️",
                 [.mediumDark]: "🏃🏾‍♂️",
-                [.dark]: "🏃🏿‍♂️"
+                [.dark]: "🏃🏿‍♂️",
             ]
         case .womanRunning:
             return [
@@ -1849,15 +1846,15 @@ extension Emoji {
                 [.mediumLight]: "🏃🏼‍♀️",
                 [.medium]: "🏃🏽‍♀️",
                 [.mediumDark]: "🏃🏾‍♀️",
-                [.dark]: "🏃🏿‍♀️"
+                [.dark]: "🏃🏿‍♀️",
             ]
-        case .dancer:
+        case .womanDancing:
             return [
                 [.light]: "💃🏻",
                 [.mediumLight]: "💃🏼",
                 [.medium]: "💃🏽",
                 [.mediumDark]: "💃🏾",
-                [.dark]: "💃🏿"
+                [.dark]: "💃🏿",
             ]
         case .manDancing:
             return [
@@ -1865,15 +1862,15 @@ extension Emoji {
                 [.mediumLight]: "🕺🏼",
                 [.medium]: "🕺🏽",
                 [.mediumDark]: "🕺🏾",
-                [.dark]: "🕺🏿"
+                [.dark]: "🕺🏿",
             ]
-        case .manInBusinessSuitLevitating:
+        case .personInSuitLevitating:
             return [
                 [.light]: "🕴🏻",
                 [.mediumLight]: "🕴🏼",
                 [.medium]: "🕴🏽",
                 [.mediumDark]: "🕴🏾",
-                [.dark]: "🕴🏿"
+                [.dark]: "🕴🏿",
             ]
         case .personInSteamyRoom:
             return [
@@ -1881,7 +1878,7 @@ extension Emoji {
                 [.mediumLight]: "🧖🏼",
                 [.medium]: "🧖🏽",
                 [.mediumDark]: "🧖🏾",
-                [.dark]: "🧖🏿"
+                [.dark]: "🧖🏿",
             ]
         case .manInSteamyRoom:
             return [
@@ -1889,7 +1886,7 @@ extension Emoji {
                 [.mediumLight]: "🧖🏼‍♂️",
                 [.medium]: "🧖🏽‍♂️",
                 [.mediumDark]: "🧖🏾‍♂️",
-                [.dark]: "🧖🏿‍♂️"
+                [.dark]: "🧖🏿‍♂️",
             ]
         case .womanInSteamyRoom:
             return [
@@ -1897,7 +1894,7 @@ extension Emoji {
                 [.mediumLight]: "🧖🏼‍♀️",
                 [.medium]: "🧖🏽‍♀️",
                 [.mediumDark]: "🧖🏾‍♀️",
-                [.dark]: "🧖🏿‍♀️"
+                [.dark]: "🧖🏿‍♀️",
             ]
         case .personClimbing:
             return [
@@ -1905,7 +1902,7 @@ extension Emoji {
                 [.mediumLight]: "🧗🏼",
                 [.medium]: "🧗🏽",
                 [.mediumDark]: "🧗🏾",
-                [.dark]: "🧗🏿"
+                [.dark]: "🧗🏿",
             ]
         case .manClimbing:
             return [
@@ -1913,7 +1910,7 @@ extension Emoji {
                 [.mediumLight]: "🧗🏼‍♂️",
                 [.medium]: "🧗🏽‍♂️",
                 [.mediumDark]: "🧗🏾‍♂️",
-                [.dark]: "🧗🏿‍♂️"
+                [.dark]: "🧗🏿‍♂️",
             ]
         case .womanClimbing:
             return [
@@ -1921,7 +1918,7 @@ extension Emoji {
                 [.mediumLight]: "🧗🏼‍♀️",
                 [.medium]: "🧗🏽‍♀️",
                 [.mediumDark]: "🧗🏾‍♀️",
-                [.dark]: "🧗🏿‍♀️"
+                [.dark]: "🧗🏿‍♀️",
             ]
         case .horseRacing:
             return [
@@ -1929,7 +1926,7 @@ extension Emoji {
                 [.mediumLight]: "🏇🏼",
                 [.medium]: "🏇🏽",
                 [.mediumDark]: "🏇🏾",
-                [.dark]: "🏇🏿"
+                [.dark]: "🏇🏿",
             ]
         case .snowboarder:
             return [
@@ -1937,15 +1934,15 @@ extension Emoji {
                 [.mediumLight]: "🏂🏼",
                 [.medium]: "🏂🏽",
                 [.mediumDark]: "🏂🏾",
-                [.dark]: "🏂🏿"
+                [.dark]: "🏂🏿",
             ]
-        case .golfer:
+        case .personGolfing:
             return [
                 [.light]: "🏌🏻",
                 [.mediumLight]: "🏌🏼",
                 [.medium]: "🏌🏽",
                 [.mediumDark]: "🏌🏾",
-                [.dark]: "🏌🏿"
+                [.dark]: "🏌🏿",
             ]
         case .manGolfing:
             return [
@@ -1953,7 +1950,7 @@ extension Emoji {
                 [.mediumLight]: "🏌🏼‍♂️",
                 [.medium]: "🏌🏽‍♂️",
                 [.mediumDark]: "🏌🏾‍♂️",
-                [.dark]: "🏌🏿‍♂️"
+                [.dark]: "🏌🏿‍♂️",
             ]
         case .womanGolfing:
             return [
@@ -1961,15 +1958,15 @@ extension Emoji {
                 [.mediumLight]: "🏌🏼‍♀️",
                 [.medium]: "🏌🏽‍♀️",
                 [.mediumDark]: "🏌🏾‍♀️",
-                [.dark]: "🏌🏿‍♀️"
+                [.dark]: "🏌🏿‍♀️",
             ]
-        case .surfer:
+        case .personSurfing:
             return [
                 [.light]: "🏄🏻",
                 [.mediumLight]: "🏄🏼",
                 [.medium]: "🏄🏽",
                 [.mediumDark]: "🏄🏾",
-                [.dark]: "🏄🏿"
+                [.dark]: "🏄🏿",
             ]
         case .manSurfing:
             return [
@@ -1977,7 +1974,7 @@ extension Emoji {
                 [.mediumLight]: "🏄🏼‍♂️",
                 [.medium]: "🏄🏽‍♂️",
                 [.mediumDark]: "🏄🏾‍♂️",
-                [.dark]: "🏄🏿‍♂️"
+                [.dark]: "🏄🏿‍♂️",
             ]
         case .womanSurfing:
             return [
@@ -1985,15 +1982,15 @@ extension Emoji {
                 [.mediumLight]: "🏄🏼‍♀️",
                 [.medium]: "🏄🏽‍♀️",
                 [.mediumDark]: "🏄🏾‍♀️",
-                [.dark]: "🏄🏿‍♀️"
+                [.dark]: "🏄🏿‍♀️",
             ]
-        case .rowboat:
+        case .personRowingBoat:
             return [
                 [.light]: "🚣🏻",
                 [.mediumLight]: "🚣🏼",
                 [.medium]: "🚣🏽",
                 [.mediumDark]: "🚣🏾",
-                [.dark]: "🚣🏿"
+                [.dark]: "🚣🏿",
             ]
         case .manRowingBoat:
             return [
@@ -2001,7 +1998,7 @@ extension Emoji {
                 [.mediumLight]: "🚣🏼‍♂️",
                 [.medium]: "🚣🏽‍♂️",
                 [.mediumDark]: "🚣🏾‍♂️",
-                [.dark]: "🚣🏿‍♂️"
+                [.dark]: "🚣🏿‍♂️",
             ]
         case .womanRowingBoat:
             return [
@@ -2009,15 +2006,15 @@ extension Emoji {
                 [.mediumLight]: "🚣🏼‍♀️",
                 [.medium]: "🚣🏽‍♀️",
                 [.mediumDark]: "🚣🏾‍♀️",
-                [.dark]: "🚣🏿‍♀️"
+                [.dark]: "🚣🏿‍♀️",
             ]
-        case .swimmer:
+        case .personSwimming:
             return [
                 [.light]: "🏊🏻",
                 [.mediumLight]: "🏊🏼",
                 [.medium]: "🏊🏽",
                 [.mediumDark]: "🏊🏾",
-                [.dark]: "🏊🏿"
+                [.dark]: "🏊🏿",
             ]
         case .manSwimming:
             return [
@@ -2025,7 +2022,7 @@ extension Emoji {
                 [.mediumLight]: "🏊🏼‍♂️",
                 [.medium]: "🏊🏽‍♂️",
                 [.mediumDark]: "🏊🏾‍♂️",
-                [.dark]: "🏊🏿‍♂️"
+                [.dark]: "🏊🏿‍♂️",
             ]
         case .womanSwimming:
             return [
@@ -2033,15 +2030,15 @@ extension Emoji {
                 [.mediumLight]: "🏊🏼‍♀️",
                 [.medium]: "🏊🏽‍♀️",
                 [.mediumDark]: "🏊🏾‍♀️",
-                [.dark]: "🏊🏿‍♀️"
+                [.dark]: "🏊🏿‍♀️",
             ]
-        case .personWithBall:
+        case .personBouncingBall:
             return [
                 [.light]: "⛹🏻",
                 [.mediumLight]: "⛹🏼",
                 [.medium]: "⛹🏽",
                 [.mediumDark]: "⛹🏾",
-                [.dark]: "⛹🏿"
+                [.dark]: "⛹🏿",
             ]
         case .manBouncingBall:
             return [
@@ -2049,7 +2046,7 @@ extension Emoji {
                 [.mediumLight]: "⛹🏼‍♂️",
                 [.medium]: "⛹🏽‍♂️",
                 [.mediumDark]: "⛹🏾‍♂️",
-                [.dark]: "⛹🏿‍♂️"
+                [.dark]: "⛹🏿‍♂️",
             ]
         case .womanBouncingBall:
             return [
@@ -2057,15 +2054,15 @@ extension Emoji {
                 [.mediumLight]: "⛹🏼‍♀️",
                 [.medium]: "⛹🏽‍♀️",
                 [.mediumDark]: "⛹🏾‍♀️",
-                [.dark]: "⛹🏿‍♀️"
+                [.dark]: "⛹🏿‍♀️",
             ]
-        case .weightLifter:
+        case .personLiftingWeights:
             return [
                 [.light]: "🏋🏻",
                 [.mediumLight]: "🏋🏼",
                 [.medium]: "🏋🏽",
                 [.mediumDark]: "🏋🏾",
-                [.dark]: "🏋🏿"
+                [.dark]: "🏋🏿",
             ]
         case .manLiftingWeights:
             return [
@@ -2073,7 +2070,7 @@ extension Emoji {
                 [.mediumLight]: "🏋🏼‍♂️",
                 [.medium]: "🏋🏽‍♂️",
                 [.mediumDark]: "🏋🏾‍♂️",
-                [.dark]: "🏋🏿‍♂️"
+                [.dark]: "🏋🏿‍♂️",
             ]
         case .womanLiftingWeights:
             return [
@@ -2081,15 +2078,15 @@ extension Emoji {
                 [.mediumLight]: "🏋🏼‍♀️",
                 [.medium]: "🏋🏽‍♀️",
                 [.mediumDark]: "🏋🏾‍♀️",
-                [.dark]: "🏋🏿‍♀️"
+                [.dark]: "🏋🏿‍♀️",
             ]
-        case .bicyclist:
+        case .personBiking:
             return [
                 [.light]: "🚴🏻",
                 [.mediumLight]: "🚴🏼",
                 [.medium]: "🚴🏽",
                 [.mediumDark]: "🚴🏾",
-                [.dark]: "🚴🏿"
+                [.dark]: "🚴🏿",
             ]
         case .manBiking:
             return [
@@ -2097,7 +2094,7 @@ extension Emoji {
                 [.mediumLight]: "🚴🏼‍♂️",
                 [.medium]: "🚴🏽‍♂️",
                 [.mediumDark]: "🚴🏾‍♂️",
-                [.dark]: "🚴🏿‍♂️"
+                [.dark]: "🚴🏿‍♂️",
             ]
         case .womanBiking:
             return [
@@ -2105,15 +2102,15 @@ extension Emoji {
                 [.mediumLight]: "🚴🏼‍♀️",
                 [.medium]: "🚴🏽‍♀️",
                 [.mediumDark]: "🚴🏾‍♀️",
-                [.dark]: "🚴🏿‍♀️"
+                [.dark]: "🚴🏿‍♀️",
             ]
-        case .mountainBicyclist:
+        case .personMountainBiking:
             return [
                 [.light]: "🚵🏻",
                 [.mediumLight]: "🚵🏼",
                 [.medium]: "🚵🏽",
                 [.mediumDark]: "🚵🏾",
-                [.dark]: "🚵🏿"
+                [.dark]: "🚵🏿",
             ]
         case .manMountainBiking:
             return [
@@ -2121,7 +2118,7 @@ extension Emoji {
                 [.mediumLight]: "🚵🏼‍♂️",
                 [.medium]: "🚵🏽‍♂️",
                 [.mediumDark]: "🚵🏾‍♂️",
-                [.dark]: "🚵🏿‍♂️"
+                [.dark]: "🚵🏿‍♂️",
             ]
         case .womanMountainBiking:
             return [
@@ -2129,15 +2126,15 @@ extension Emoji {
                 [.mediumLight]: "🚵🏼‍♀️",
                 [.medium]: "🚵🏽‍♀️",
                 [.mediumDark]: "🚵🏾‍♀️",
-                [.dark]: "🚵🏿‍♀️"
+                [.dark]: "🚵🏿‍♀️",
             ]
-        case .personDoingCartwheel:
+        case .personCartwheeling:
             return [
                 [.light]: "🤸🏻",
                 [.mediumLight]: "🤸🏼",
                 [.medium]: "🤸🏽",
                 [.mediumDark]: "🤸🏾",
-                [.dark]: "🤸🏿"
+                [.dark]: "🤸🏿",
             ]
         case .manCartwheeling:
             return [
@@ -2145,7 +2142,7 @@ extension Emoji {
                 [.mediumLight]: "🤸🏼‍♂️",
                 [.medium]: "🤸🏽‍♂️",
                 [.mediumDark]: "🤸🏾‍♂️",
-                [.dark]: "🤸🏿‍♂️"
+                [.dark]: "🤸🏿‍♂️",
             ]
         case .womanCartwheeling:
             return [
@@ -2153,15 +2150,15 @@ extension Emoji {
                 [.mediumLight]: "🤸🏼‍♀️",
                 [.medium]: "🤸🏽‍♀️",
                 [.mediumDark]: "🤸🏾‍♀️",
-                [.dark]: "🤸🏿‍♀️"
+                [.dark]: "🤸🏿‍♀️",
             ]
-        case .waterPolo:
+        case .personPlayingWaterPolo:
             return [
                 [.light]: "🤽🏻",
                 [.mediumLight]: "🤽🏼",
                 [.medium]: "🤽🏽",
                 [.mediumDark]: "🤽🏾",
-                [.dark]: "🤽🏿"
+                [.dark]: "🤽🏿",
             ]
         case .manPlayingWaterPolo:
             return [
@@ -2169,7 +2166,7 @@ extension Emoji {
                 [.mediumLight]: "🤽🏼‍♂️",
                 [.medium]: "🤽🏽‍♂️",
                 [.mediumDark]: "🤽🏾‍♂️",
-                [.dark]: "🤽🏿‍♂️"
+                [.dark]: "🤽🏿‍♂️",
             ]
         case .womanPlayingWaterPolo:
             return [
@@ -2177,15 +2174,15 @@ extension Emoji {
                 [.mediumLight]: "🤽🏼‍♀️",
                 [.medium]: "🤽🏽‍♀️",
                 [.mediumDark]: "🤽🏾‍♀️",
-                [.dark]: "🤽🏿‍♀️"
+                [.dark]: "🤽🏿‍♀️",
             ]
-        case .handball:
+        case .personPlayingHandball:
             return [
                 [.light]: "🤾🏻",
                 [.mediumLight]: "🤾🏼",
                 [.medium]: "🤾🏽",
                 [.mediumDark]: "🤾🏾",
-                [.dark]: "🤾🏿"
+                [.dark]: "🤾🏿",
             ]
         case .manPlayingHandball:
             return [
@@ -2193,7 +2190,7 @@ extension Emoji {
                 [.mediumLight]: "🤾🏼‍♂️",
                 [.medium]: "🤾🏽‍♂️",
                 [.mediumDark]: "🤾🏾‍♂️",
-                [.dark]: "🤾🏿‍♂️"
+                [.dark]: "🤾🏿‍♂️",
             ]
         case .womanPlayingHandball:
             return [
@@ -2201,15 +2198,15 @@ extension Emoji {
                 [.mediumLight]: "🤾🏼‍♀️",
                 [.medium]: "🤾🏽‍♀️",
                 [.mediumDark]: "🤾🏾‍♀️",
-                [.dark]: "🤾🏿‍♀️"
+                [.dark]: "🤾🏿‍♀️",
             ]
-        case .juggling:
+        case .personJuggling:
             return [
                 [.light]: "🤹🏻",
                 [.mediumLight]: "🤹🏼",
                 [.medium]: "🤹🏽",
                 [.mediumDark]: "🤹🏾",
-                [.dark]: "🤹🏿"
+                [.dark]: "🤹🏿",
             ]
         case .manJuggling:
             return [
@@ -2217,7 +2214,7 @@ extension Emoji {
                 [.mediumLight]: "🤹🏼‍♂️",
                 [.medium]: "🤹🏽‍♂️",
                 [.mediumDark]: "🤹🏾‍♂️",
-                [.dark]: "🤹🏿‍♂️"
+                [.dark]: "🤹🏿‍♂️",
             ]
         case .womanJuggling:
             return [
@@ -2225,7 +2222,7 @@ extension Emoji {
                 [.mediumLight]: "🤹🏼‍♀️",
                 [.medium]: "🤹🏽‍♀️",
                 [.mediumDark]: "🤹🏾‍♀️",
-                [.dark]: "🤹🏿‍♀️"
+                [.dark]: "🤹🏿‍♀️",
             ]
         case .personInLotusPosition:
             return [
@@ -2233,7 +2230,7 @@ extension Emoji {
                 [.mediumLight]: "🧘🏼",
                 [.medium]: "🧘🏽",
                 [.mediumDark]: "🧘🏾",
-                [.dark]: "🧘🏿"
+                [.dark]: "🧘🏿",
             ]
         case .manInLotusPosition:
             return [
@@ -2241,7 +2238,7 @@ extension Emoji {
                 [.mediumLight]: "🧘🏼‍♂️",
                 [.medium]: "🧘🏽‍♂️",
                 [.mediumDark]: "🧘🏾‍♂️",
-                [.dark]: "🧘🏿‍♂️"
+                [.dark]: "🧘🏿‍♂️",
             ]
         case .womanInLotusPosition:
             return [
@@ -2249,23 +2246,23 @@ extension Emoji {
                 [.mediumLight]: "🧘🏼‍♀️",
                 [.medium]: "🧘🏽‍♀️",
                 [.mediumDark]: "🧘🏾‍♀️",
-                [.dark]: "🧘🏿‍♀️"
+                [.dark]: "🧘🏿‍♀️",
             ]
-        case .bath:
+        case .personTakingBath:
             return [
                 [.light]: "🛀🏻",
                 [.mediumLight]: "🛀🏼",
                 [.medium]: "🛀🏽",
                 [.mediumDark]: "🛀🏾",
-                [.dark]: "🛀🏿"
+                [.dark]: "🛀🏿",
             ]
-        case .sleepingAccommodation:
+        case .personInBed:
             return [
                 [.light]: "🛌🏻",
                 [.mediumLight]: "🛌🏼",
                 [.medium]: "🛌🏽",
                 [.mediumDark]: "🛌🏾",
-                [.dark]: "🛌🏿"
+                [.dark]: "🛌🏿",
             ]
         case .peopleHoldingHands:
             return [
@@ -2293,9 +2290,9 @@ extension Emoji {
                 [.dark, .light]: "🧑🏿‍🤝‍🧑🏻",
                 [.dark, .mediumLight]: "🧑🏿‍🤝‍🧑🏼",
                 [.dark, .medium]: "🧑🏿‍🤝‍🧑🏽",
-                [.dark, .mediumDark]: "🧑🏿‍🤝‍🧑🏾"
+                [.dark, .mediumDark]: "🧑🏿‍🤝‍🧑🏾",
             ]
-        case .twoWomenHoldingHands:
+        case .womenHoldingHands:
             return [
                 [.light]: "👭🏻",
                 [.light, .mediumLight]: "👩🏻‍🤝‍👩🏼",
@@ -2321,9 +2318,9 @@ extension Emoji {
                 [.dark, .light]: "👩🏿‍🤝‍👩🏻",
                 [.dark, .mediumLight]: "👩🏿‍🤝‍👩🏼",
                 [.dark, .medium]: "👩🏿‍🤝‍👩🏽",
-                [.dark, .mediumDark]: "👩🏿‍🤝‍👩🏾"
+                [.dark, .mediumDark]: "👩🏿‍🤝‍👩🏾",
             ]
-        case .manAndWomanHoldingHands:
+        case .womanAndManHoldingHands:
             return [
                 [.light]: "👫🏻",
                 [.light, .mediumLight]: "👩🏻‍🤝‍👨🏼",
@@ -2349,9 +2346,9 @@ extension Emoji {
                 [.dark, .light]: "👩🏿‍🤝‍👨🏻",
                 [.dark, .mediumLight]: "👩🏿‍🤝‍👨🏼",
                 [.dark, .medium]: "👩🏿‍🤝‍👨🏽",
-                [.dark, .mediumDark]: "👩🏿‍🤝‍👨🏾"
+                [.dark, .mediumDark]: "👩🏿‍🤝‍👨🏾",
             ]
-        case .twoMenHoldingHands:
+        case .menHoldingHands:
             return [
                 [.light]: "👬🏻",
                 [.light, .mediumLight]: "👨🏻‍🤝‍👨🏼",
@@ -2377,9 +2374,9 @@ extension Emoji {
                 [.dark, .light]: "👨🏿‍🤝‍👨🏻",
                 [.dark, .mediumLight]: "👨🏿‍🤝‍👨🏼",
                 [.dark, .medium]: "👨🏿‍🤝‍👨🏽",
-                [.dark, .mediumDark]: "👨🏿‍🤝‍👨🏾"
+                [.dark, .mediumDark]: "👨🏿‍🤝‍👨🏾",
             ]
-        case .personKissPerson:
+        case .kiss:
             return [
                 [.light]: "💏🏻",
                 [.light, .mediumLight]: "🧑🏻‍❤️‍💋‍🧑🏼",
@@ -2405,9 +2402,9 @@ extension Emoji {
                 [.dark, .light]: "🧑🏿‍❤️‍💋‍🧑🏻",
                 [.dark, .mediumLight]: "🧑🏿‍❤️‍💋‍🧑🏼",
                 [.dark, .medium]: "🧑🏿‍❤️‍💋‍🧑🏽",
-                [.dark, .mediumDark]: "🧑🏿‍❤️‍💋‍🧑🏾"
+                [.dark, .mediumDark]: "🧑🏿‍❤️‍💋‍🧑🏾",
             ]
-        case .womanKissMan:
+        case .kissWomanMan:
             return [
                 [.light]: "👩🏻‍❤️‍💋‍👨🏻",
                 [.light, .mediumLight]: "👩🏻‍❤️‍💋‍👨🏼",
@@ -2433,9 +2430,9 @@ extension Emoji {
                 [.dark, .light]: "👩🏿‍❤️‍💋‍👨🏻",
                 [.dark, .mediumLight]: "👩🏿‍❤️‍💋‍👨🏼",
                 [.dark, .medium]: "👩🏿‍❤️‍💋‍👨🏽",
-                [.dark, .mediumDark]: "👩🏿‍❤️‍💋‍👨🏾"
+                [.dark, .mediumDark]: "👩🏿‍❤️‍💋‍👨🏾",
             ]
-        case .manKissMan:
+        case .kissManMan:
             return [
                 [.light]: "👨🏻‍❤️‍💋‍👨🏻",
                 [.light, .mediumLight]: "👨🏻‍❤️‍💋‍👨🏼",
@@ -2461,9 +2458,9 @@ extension Emoji {
                 [.dark, .light]: "👨🏿‍❤️‍💋‍👨🏻",
                 [.dark, .mediumLight]: "👨🏿‍❤️‍💋‍👨🏼",
                 [.dark, .medium]: "👨🏿‍❤️‍💋‍👨🏽",
-                [.dark, .mediumDark]: "👨🏿‍❤️‍💋‍👨🏾"
+                [.dark, .mediumDark]: "👨🏿‍❤️‍💋‍👨🏾",
             ]
-        case .womanKissWoman:
+        case .kissWomanWoman:
             return [
                 [.light]: "👩🏻‍❤️‍💋‍👩🏻",
                 [.light, .mediumLight]: "👩🏻‍❤️‍💋‍👩🏼",
@@ -2489,9 +2486,9 @@ extension Emoji {
                 [.dark, .light]: "👩🏿‍❤️‍💋‍👩🏻",
                 [.dark, .mediumLight]: "👩🏿‍❤️‍💋‍👩🏼",
                 [.dark, .medium]: "👩🏿‍❤️‍💋‍👩🏽",
-                [.dark, .mediumDark]: "👩🏿‍❤️‍💋‍👩🏾"
+                [.dark, .mediumDark]: "👩🏿‍❤️‍💋‍👩🏾",
             ]
-        case .personHeartPerson:
+        case .coupleWithHeart:
             return [
                 [.light]: "💑🏻",
                 [.light, .mediumLight]: "🧑🏻‍❤️‍🧑🏼",
@@ -2517,9 +2514,9 @@ extension Emoji {
                 [.dark, .light]: "🧑🏿‍❤️‍🧑🏻",
                 [.dark, .mediumLight]: "🧑🏿‍❤️‍🧑🏼",
                 [.dark, .medium]: "🧑🏿‍❤️‍🧑🏽",
-                [.dark, .mediumDark]: "🧑🏿‍❤️‍🧑🏾"
+                [.dark, .mediumDark]: "🧑🏿‍❤️‍🧑🏾",
             ]
-        case .womanHeartMan:
+        case .coupleWithHeartWomanMan:
             return [
                 [.light]: "👩🏻‍❤️‍👨🏻",
                 [.light, .mediumLight]: "👩🏻‍❤️‍👨🏼",
@@ -2545,9 +2542,9 @@ extension Emoji {
                 [.dark, .light]: "👩🏿‍❤️‍👨🏻",
                 [.dark, .mediumLight]: "👩🏿‍❤️‍👨🏼",
                 [.dark, .medium]: "👩🏿‍❤️‍👨🏽",
-                [.dark, .mediumDark]: "👩🏿‍❤️‍👨🏾"
+                [.dark, .mediumDark]: "👩🏿‍❤️‍👨🏾",
             ]
-        case .manHeartMan:
+        case .coupleWithHeartManMan:
             return [
                 [.light]: "👨🏻‍❤️‍👨🏻",
                 [.light, .mediumLight]: "👨🏻‍❤️‍👨🏼",
@@ -2573,9 +2570,9 @@ extension Emoji {
                 [.dark, .light]: "👨🏿‍❤️‍👨🏻",
                 [.dark, .mediumLight]: "👨🏿‍❤️‍👨🏼",
                 [.dark, .medium]: "👨🏿‍❤️‍👨🏽",
-                [.dark, .mediumDark]: "👨🏿‍❤️‍👨🏾"
+                [.dark, .mediumDark]: "👨🏿‍❤️‍👨🏾",
             ]
-        case .womanHeartWoman:
+        case .coupleWithHeartWomanWoman:
             return [
                 [.light]: "👩🏻‍❤️‍👩🏻",
                 [.light, .mediumLight]: "👩🏻‍❤️‍👩🏼",
@@ -2601,7 +2598,7 @@ extension Emoji {
                 [.dark, .light]: "👩🏿‍❤️‍👩🏻",
                 [.dark, .mediumLight]: "👩🏿‍❤️‍👩🏼",
                 [.dark, .medium]: "👩🏿‍❤️‍👩🏽",
-                [.dark, .mediumDark]: "👩🏿‍❤️‍👩🏾"
+                [.dark, .mediumDark]: "👩🏿‍❤️‍👩🏾",
             ]
         default: return nil
         }
