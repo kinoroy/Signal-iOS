@@ -193,6 +193,15 @@ public extension Theme {
     }
 
     class func iconImage(_ icon: ThemeIcon, isDarkThemeEnabled: Bool) -> UIImage {
+        // Special case for translate icon - use SF Symbol
+        if icon == .contextMenuTranslate {
+            if let image = UIImage(systemName: "translate") {
+                return image.withRenderingMode(.alwaysTemplate)
+            }
+            owsFailDebug("translate SF Symbol was unexpectedly nil")
+            return UIImage()
+        }
+
         let name = iconName(icon, isDarkThemeEnabled: isDarkThemeEnabled)
         guard let image = UIImage(named: name) else {
             owsFailDebug("image was unexpectedly nil: \(name)")
