@@ -1717,11 +1717,12 @@ public class CVComponentMessage: CVComponentBase, CVRootComponent {
                     owsFailDebug("Missing measurement state.")
                     return
                 }
-                guard
-                    let bodyTextSubviewSize = subviewSizes.first,
-                    bodyTextSubviewSize == bodyTextMeasurement.size
-                else {
-                    owsFailDebug("Invalid bodyTextSubviewSize.")
+                guard let bodyTextSubviewSize = subviewSizes.first else {
+                    owsFailDebug("Missing bodyTextSubviewSize.")
+                    return
+                }
+                // Skip overlap optimization if sizes don't match (e.g., when translation is showing)
+                guard bodyTextSubviewSize == bodyTextMeasurement.size else {
                     return
                 }
 

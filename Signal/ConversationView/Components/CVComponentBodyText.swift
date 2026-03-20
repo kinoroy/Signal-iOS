@@ -456,25 +456,24 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         let bodyTextLabel = componentView.bodyTextLabel
         bodyTextLabel.configureForRendering(config: bodyTextLabelConfig, spoilerAnimationManager: spoilerAnimationManager)
 
-        // Configure translation views
-        configureTranslationViews(componentView: componentView)
-
-        var subviews: [UIView] = [bodyTextLabel.view]
-
-        if bodyTextState.translatedText != nil || bodyTextState.isTranslationLoading {
-            subviews.append(componentView.translationContainerView)
-        }
-
-        if bodyTextLabel.view.superview == nil || componentView.translationContainerView.superview == nil {
+        if bodyTextLabel.view.superview == nil {
             let stackView = componentView.stackView
             stackView.reset()
             stackView.configure(
                 config: stackViewConfig,
                 cellMeasurement: cellMeasurement,
                 measurementKey: Self.measurementKey_stackView,
-                subviews: subviews,
+                subviews: [bodyTextLabel.view],
             )
+            componentView.wrapperView.addSubview(stackView)
         }
+
+        // Keep the wrapper informed of body text height so it can place the translation container below it.
+        let bodyTextHeight = cellMeasurement.measurement(key: Self.measurementKey_stackView)?.measuredSize.height ?? 0
+        componentView.wrapperView.bodyTextStackHeight = bodyTextHeight
+
+        // Configure and add translation views separately (not part of measured stack)
+        configureTranslationViews(componentView: componentView)
     }
 
     private func configureTranslationViews(componentView: CVComponentViewBodyText) {
@@ -483,6 +482,19 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         let languageLabel = componentView.translationLanguageLabel
         let textLabel = componentView.translationTextLabel
         let loadingLabel = componentView.translationLoadingLabel
+
+        let hasTranslation = bodyTextState.translatedText != nil || bodyTextState.isTranslationLoading
+
+        let wrapperView = componentView.wrapperView
+        if hasTranslation {
+            // Add translation container to the wrapper view (sibling of stackView) if not already there.
+            // BodyTextWrapperView.layoutSubviews positions it below the stack view.
+            if translationContainer.superview != wrapperView {
+                translationContainer.removeFromSuperview()
+                translationContainer.translatesAutoresizingMaskIntoConstraints = true
+                wrapperView.addSubview(translationContainer)
+            }
+        }
 
         if bodyTextState.isTranslationLoading {
             translationContainer.isHidden = false
@@ -511,6 +523,9 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             textLabel.textColor = bodyTextColor
         } else {
             translationContainer.isHidden = true
+            if translationContainer.superview == wrapperView {
+                translationContainer.removeFromSuperview()
+            }
         }
     }
 
@@ -792,22 +807,25 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         measurementBuilder.setObject(key: Self.measurementKey_textMeasurement, value: textMeasurement)
         measurementBuilder.setValue(key: Self.measurementKey_maxWidth, value: maxWidth)
         let textSize = textMeasurement.size.ceil
-        var subviewInfos: [ManualStackSubviewInfo] = [textSize.asManualSubviewInfo]
-
-        // Add translation height if needed
-        if bodyTextState.translatedText != nil || bodyTextState.isTranslationLoading {
-            let translationHeight = measureTranslationHeight(maxWidth: maxWidth)
-            subviewInfos.append(CGSize(width: maxWidth, height: translationHeight).asManualSubviewInfo)
-        }
-
+        let textInfo = textSize.asManualSubviewInfo
         let stackMeasurement = ManualStackView.measure(
             config: stackViewConfig,
             measurementBuilder: measurementBuilder,
             measurementKey: Self.measurementKey_stackView,
-            subviewInfos: subviewInfos,
+            subviewInfos: [textInfo],
             maxWidth: maxWidth,
         )
-        return stackMeasurement.measuredSize
+
+        var totalSize = stackMeasurement.measuredSize
+
+        // Add translation height if needed
+        // Note: This will cause the overlap optimization to be skipped, which is correct
+        // when translation is showing (footer should not overlap translation)
+        if bodyTextState.translatedText != nil || bodyTextState.isTranslationLoading {
+            totalSize.height += measureTranslationHeight(maxWidth: maxWidth)
+        }
+
+        return totalSize
     }
 
     private func measureTranslationHeight(maxWidth: CGFloat) -> CGFloat {
@@ -910,6 +928,24 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
     fileprivate class BodyTextRootView: ManualStackView {}
 
+    // Wrapper that holds both the body text ManualStackView and the translation container as siblings,
+    // positioning them in layoutSubviews so both are frame-based (no cross-view Auto Layout).
+    fileprivate class BodyTextWrapperView: UIView {
+        var bodyTextStackHeight: CGFloat = 0
+
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            for subview in subviews {
+                if subview is BodyTextRootView {
+                    subview.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bodyTextStackHeight > 0 ? bodyTextStackHeight : bounds.height)
+                } else {
+                    let y = bodyTextStackHeight
+                    subview.frame = CGRect(x: 0, y: y, width: bounds.width, height: bounds.height - y)
+                }
+            }
+        }
+    }
+
     public static func findBodyTextRootView(_ view: UIView) -> UIView? {
         if view is BodyTextRootView {
             return view
@@ -930,6 +966,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
         public weak var componentDelegate: CVComponentDelegate?
 
+        fileprivate let wrapperView = BodyTextWrapperView()
         fileprivate let stackView = BodyTextRootView(name: "bodyText")
 
         public let bodyTextLabel = CVTextLabel()
@@ -944,7 +981,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         public var isDedicatedCellView = false
 
         public var rootView: UIView {
-            stackView
+            wrapperView
         }
 
         init(componentDelegate: CVComponentDelegate) {
@@ -1003,6 +1040,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
             bodyTextLabel.reset()
             translationContainerView.isHidden = true
+            translationContainerView.removeFromSuperview()
             translationTextLabel.text = nil
             translationLanguageLabel.text = nil
             translationLoadingLabel.text = nil
