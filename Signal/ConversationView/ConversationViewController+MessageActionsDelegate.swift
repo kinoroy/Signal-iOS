@@ -257,9 +257,9 @@ extension ConversationViewController: MessageActionsDelegate {
 
         let interactionId = itemViewModel.interaction.uniqueId
 
-        // Don't re-translate if already translated or loading
+        // Don't re-translate if already translated
         let translationState = viewState.translationState
-        if translationState.getTranslation(for: interactionId) != nil || translationState.isLoading(interactionId) {
+        if translationState.translations[interactionId] != nil {
             return
         }
 
@@ -273,14 +273,11 @@ extension ConversationViewController: MessageActionsDelegate {
             textToTranslate = body.asPlaintext()
         }
 
-        translationState.setLoading(interactionId)
-
         Task { @MainActor in
             let translatedText = await TranslationManager.shared.translate(text: textToTranslate, in: self)
-            translationState.clearLoading(interactionId)
 
             if let translatedText {
-                translationState.setTranslation(translatedText, for: interactionId)
+                translationState.translations[interactionId] = translatedText
                 self.loadCoordinator.enqueueReload()
             }
         }
