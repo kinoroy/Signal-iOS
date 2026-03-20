@@ -80,6 +80,7 @@ public class CVViewState: NSObject {
     public let textExpansion = CVTextExpansion()
     public let spoilerState = SpoilerRenderState()
     public let messageSwipeActionState = CVMessageSwipeActionState()
+    public let translationState = CVTranslationState()
 
     public var isDarkThemeEnabled: Bool = Theme.isDarkThemeEnabled
 

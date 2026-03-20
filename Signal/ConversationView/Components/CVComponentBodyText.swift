@@ -18,6 +18,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         let shouldUseAttributedText: Bool
         let hasPendingMessageRequest: Bool
         fileprivate let items: [CVTextLabel.Item]
+        let translatedText: String?
 
         var canUseDedicatedCell: Bool {
             if searchText != nil {
@@ -254,14 +255,17 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             items = []
         }
 
+        let translatedText = viewStateSnapshot.translationState.getTranslation(for: interaction.uniqueId)
+
         return State(
             bodyText: bodyText,
             isTextExpanded: isTextExpanded,
             searchText: searchText,
             revealedSpoilerIds: revealedSpoilerIds,
-            shouldUseAttributedText: shouldUseAttributedText,
+            shouldUseAttributedText: shouldUseAttributedText || translatedText != nil,
             hasPendingMessageRequest: hasPendingMessageRequest,
             items: items,
+            translatedText: translatedText,
         )
     }
 
@@ -689,14 +693,48 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             searchRanges: .matchedRanges(matchedSearchRanges),
         )
 
+        // Append translated text if available
+        let finalText: CVTextValue
+        if let translatedText = bodyTextState.translatedText {
+            let original: NSMutableAttributedString
+            switch text {
+            case .text(let string):
+                original = NSMutableAttributedString(string: string, attributes: [
+                    .font: textMessageFont,
+                    .foregroundColor: bodyTextColor,
+                ])
+            case .attributedText(let attrString):
+                original = NSMutableAttributedString(attributedString: attrString)
+            case .messageBody(let body):
+                original = NSMutableAttributedString(attributedString: body.asAttributedStringForDisplay(
+                    config: displayConfiguration,
+                    isDarkThemeEnabled: Theme.isDarkThemeEnabled,
+                ))
+            }
+            let separator = NSAttributedString(string: "\n\n", attributes: [.font: textMessageFont])
+            let translatedColor = bodyTextColor.withAlphaComponent(0.7)
+            let translation = NSAttributedString(string: translatedText, attributes: [
+                .font: textMessageFont,
+                .foregroundColor: translatedColor,
+            ])
+            original.append(separator)
+            original.append(translation)
+            finalText = .attributedText(original)
+        } else {
+            finalText = text
+        }
+
         var extraCacheKeyFactors = [String]()
         if hasPendingMessageRequest {
             extraCacheKeyFactors.append("hasPendingMessageRequest")
         }
         extraCacheKeyFactors.append("items: \(!bodyTextState.items.isEmpty)")
+        if bodyTextState.translatedText != nil {
+            extraCacheKeyFactors.append("translated")
+        }
 
         return CVTextViewConfig(
-            text: text,
+            text: finalText,
             font: textMessageFont,
             textColor: bodyTextColor,
             textAlignment: textAlignment,

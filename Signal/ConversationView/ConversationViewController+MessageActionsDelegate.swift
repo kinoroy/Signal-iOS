@@ -251,9 +251,17 @@ extension ConversationViewController: MessageActionsDelegate {
     }
 
     func messageActionsTranslateItem(_ itemViewModel: CVItemViewModelImpl) {
-        guard #available(iOS 17.4, *) else { return }
+        guard #available(iOS 18.0, *) else { return }
 
         guard let bodyText = itemViewModel.displayableBodyText else { return }
+
+        let interactionId = itemViewModel.interaction.uniqueId
+
+        // Don't re-translate if already translated or loading
+        let translationState = viewState.translationState
+        if translationState.getTranslation(for: interactionId) != nil || translationState.isLoading(interactionId) {
+            return
+        }
 
         let textToTranslate: String
         switch bodyText.fullTextValue {
@@ -265,7 +273,17 @@ extension ConversationViewController: MessageActionsDelegate {
             textToTranslate = body.asPlaintext()
         }
 
-        TranslationManager.shared.presentTranslation(for: textToTranslate, from: self)
+        translationState.setLoading(interactionId)
+
+        Task { @MainActor in
+            let translatedText = await TranslationManager.shared.translate(text: textToTranslate, in: self)
+            translationState.clearLoading(interactionId)
+
+            if let translatedText {
+                translationState.setTranslation(translatedText, for: interactionId)
+                self.loadCoordinator.enqueueReload()
+            }
+        }
     }
 
     func messageActionsShowPaymentDetails(_ itemViewModel: CVItemViewModelImpl) {
