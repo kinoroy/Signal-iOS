@@ -250,6 +250,45 @@ extension ConversationViewController: MessageActionsDelegate {
         AppEnvironment.shared.speechManagerRef.stop()
     }
 
+    func messageActionsTranslateItem(_ itemViewModel: CVItemViewModelImpl) {
+        guard #available(iOS 26.0, *) else { return }
+
+        let interactionId = itemViewModel.interaction.uniqueId
+        guard let bodyText = itemViewModel.displayableBodyText else { return }
+
+        let textToTranslate: String
+        switch bodyText.fullTextValue {
+        case .text(let text):
+            textToTranslate = text
+        case .attributedText(let attrText):
+            textToTranslate = attrText.string
+        case .messageBody(let body):
+            textToTranslate = body.asPlaintext()
+        }
+
+        // Mark loading and refresh
+        viewState.translationState.setLoading(for: interactionId)
+        loadCoordinator.enqueueReload()
+
+        // Async translation
+        Task { @MainActor in
+            do {
+                let result = try await TranslationManager.shared.translate(text: textToTranslate)
+                viewState.translationState.setTranslation(
+                    for: interactionId,
+                    result: CVTranslationState.TranslationResult(
+                        translatedText: result.translatedText,
+                        targetLanguage: result.targetLanguage
+                    )
+                )
+            } catch {
+                viewState.translationState.clearLoading(for: interactionId)
+                Logger.error("Translation failed: \(error)")
+            }
+            loadCoordinator.enqueueReload()
+        }
+    }
+
     func messageActionsShowPaymentDetails(_ itemViewModel: CVItemViewModelImpl) {
         guard let contactAddress = (thread as? TSContactThread)?.contactAddress else {
             owsFailDebug("Should be contact thread")

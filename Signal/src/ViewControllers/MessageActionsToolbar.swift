@@ -25,6 +25,7 @@ public class MessageAction: NSObject {
         case select
         case speak
         case stopSpeaking
+        case translate
         case edit
         case showPaymentDetails
         case endPoll
@@ -45,10 +46,11 @@ public class MessageAction: NSObject {
             case .showPaymentDetails: 8
             case .speak: 9
             case .stopSpeaking: 10
-            case .info: 11
-            case .pin: 12
-            case .unpin: 13
-            case .delete: 14
+            case .translate: 11
+            case .info: 12
+            case .pin: 13
+            case .unpin: 14
+            case .delete: 15
             }
         }
     }
@@ -95,6 +97,8 @@ public class MessageAction: NSObject {
                 return .contextMenuSpeak
             case .stopSpeaking:
                 return .contextMenuStopSpeaking
+            case .translate:
+                return .contextMenuTranslate
             case .edit:
                 return .contextMenuEdit
             case .showPaymentDetails:

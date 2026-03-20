@@ -2248,6 +2248,9 @@
 /* Context menu button title */
 "CONTEXT_MENU_STOP_SPEAKING_MESSAGE" = "Stop";
 
+/* Context menu button title for translating a message */
+"CONTEXT_MENU_TRANSLATE" = "Translate";
+
 /* Message for the 'conversation delete confirmation' alert. */
 "CONVERSATION_DELETE_CONFIRMATION_ALERT_MESSAGE" = "This chat will be deleted from all your devices.";
 
@@ -5271,6 +5274,9 @@
 
 /* Action sheet accessibility label */
 "MESSAGE_ACTION_STOP_SPEAKING_MESSAGE" = "Stop Speaking Message";
+
+/* Action sheet button title for translating a message */
+"MESSAGE_ACTION_TRANSLATE" = "Translate";
 
 /* Title for message actions for a group invite link. */
 "MESSAGE_ACTION_TITLE_GROUP_INVITE" = "Group Invite";
@@ -9711,6 +9717,12 @@
 
 /* Notification prompting the user to relaunch Signal after a device transfer completed. */
 "TRANSFER_RELAUNCH_NOTIFICATION" = "Open Signal to start messaging";
+
+/* Loading indicator text while translating a message */
+"TRANSLATION_LOADING" = "Translating...";
+
+/* Label showing which language the message was translated to. Embeds {{language name}} */
+"TRANSLATION_TRANSLATED_TO" = "Translated to %@";
 
 /* Label for the cancel button in an alert or action sheet. */
 "TXT_CANCEL_TITLE" = "Cancel";

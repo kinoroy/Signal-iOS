@@ -164,6 +164,8 @@
 		32ECD08824BFBF8000EDDED0 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ECD08724BFBF8000EDDED0 /* HelpViewController.swift */; };
 		32ECD08A24BFBF9500EDDED0 /* ContactSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ECD08924BFBF9500EDDED0 /* ContactSupportViewController.swift */; };
 		32FAB92A2727A57100FB76A6 /* PrimaryImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB9292727A57100FB76A6 /* PrimaryImageView.swift */; };
+		336774992F6CC62000B5FCEC /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336774982F6CC62000B5FCEC /* TranslationManager.swift */; };
+		3367749B2F6CC63100B5FCEC /* TranslationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367749A2F6CC63100B5FCEC /* TranslationState.swift */; };
 		3402A9DA271D953B0084CBAE /* SUIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3402A9D9271D953A0084CBAE /* SUIEnvironment.swift */; };
 		3402A9E8271D97090084CBAE /* UIView+SignalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3402A9E5271D97090084CBAE /* UIView+SignalUI.swift */; };
 		3402AA02271D9DAF0084CBAE /* GroupViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A95507271B510400B05242 /* GroupViewUtils.swift */; };
@@ -4333,6 +4335,8 @@
 		32ECD08724BFBF8000EDDED0 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		32ECD08924BFBF9500EDDED0 /* ContactSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSupportViewController.swift; sourceTree = "<group>"; };
 		32FAB9292727A57100FB76A6 /* PrimaryImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryImageView.swift; sourceTree = "<group>"; };
+		336774982F6CC62000B5FCEC /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
+		3367749A2F6CC63100B5FCEC /* TranslationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationState.swift; sourceTree = "<group>"; };
 		3402A9D9271D953A0084CBAE /* SUIEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIEnvironment.swift; sourceTree = "<group>"; };
 		3402A9E0271D96570084CBAE /* UIView+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+OWS.swift"; sourceTree = "<group>"; };
 		3402A9E5271D97090084CBAE /* UIView+SignalUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SignalUI.swift"; sourceTree = "<group>"; };
@@ -8604,6 +8608,15 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
+		336774972F6CC5FE00B5FCEC /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				336774982F6CC62000B5FCEC /* TranslationManager.swift */,
+				3367749A2F6CC63100B5FCEC /* TranslationState.swift */,
+			);
+			path = Translation;
+			sourceTree = "<group>";
+		};
 		3402A9D8271D953A0084CBAE /* AppLaunch */ = {
 			isa = PBXGroup;
 			children = (
@@ -12090,6 +12103,7 @@
 				881FF30623B5B1520023B620 /* Signal-AppStore.entitlements */,
 				B657DDC91911A40500F45B0C /* Signal.entitlements */,
 				7665BC9C2A3A72910060279B /* Symbols.xcassets */,
+				336774972F6CC5FE00B5FCEC /* Translation */,
 			);
 			path = Signal;
 			sourceTree = "<group>";
@@ -18138,6 +18152,7 @@
 				D9E43BED2CC194140001536E /* CallLinkBulkApprovalSheet.swift in Sources */,
 				D9E43C182CC194140001536E /* CallLinkCall.swift in Sources */,
 				D9E43BEE2CC194140001536E /* CallLinkDeleter.swift in Sources */,
+				3367749B2F6CC63100B5FCEC /* TranslationState.swift in Sources */,
 				D9E43C192CC194140001536E /* CallLinkFetchJobRunner.swift in Sources */,
 				D9E43C1A2CC194140001536E /* CallLinkManager.swift in Sources */,
 				D9E43BEF2CC194140001536E /* CallLinkProfileKeySharingManager.swift in Sources */,
@@ -18533,6 +18548,7 @@
 				34DE9C02256575300080E4AF /* MessageLoader.swift in Sources */,
 				881218F0238CA51600E6F271 /* MessageReactionPicker.swift in Sources */,
 				88D1D40222EBB5A100F472C5 /* MessageRequestView.swift in Sources */,
+				336774992F6CC62000B5FCEC /* TranslationManager.swift in Sources */,
 				34EB0E722629DC2B00B62DC3 /* MessageSelectionView.swift in Sources */,
 				34EB0CEB26289D8800B62DC3 /* MessageTimerView.swift in Sources */,
 				8829883C25B9FD9E00DEE1E3 /* MockConversationView.swift in Sources */,

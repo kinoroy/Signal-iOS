@@ -13,6 +13,7 @@ protocol MessageActionsDelegate: AnyObject {
     func messageActionsDeleteItem(_ itemViewModel: CVItemViewModelImpl)
     func messageActionsSpeakItem(_ itemViewModel: CVItemViewModelImpl)
     func messageActionsStopSpeakingItem(_ itemViewModel: CVItemViewModelImpl)
+    func messageActionsTranslateItem(_ itemViewModel: CVItemViewModelImpl)
     func messageActionsEditItem(_ itemViewModel: CVItemViewModelImpl)
     func messageActionsShowPaymentDetails(_ itemViewModel: CVItemViewModelImpl)
     func messageActionsEndPoll(_ itemViewModel: CVItemViewModelImpl)
@@ -182,6 +183,20 @@ enum MessageActionBuilder {
         )
     }
 
+    @available(iOS 26.0, *)
+    static func translateMessage(itemViewModel: CVItemViewModelImpl, delegate: MessageActionsDelegate) -> MessageAction {
+        MessageAction(
+            .translate,
+            accessibilityLabel: OWSLocalizedString("MESSAGE_ACTION_TRANSLATE", comment: "Action sheet button title for translating a message"),
+            accessibilityIdentifier: UIView.accessibilityIdentifier(containerName: "message_action", name: "translate"),
+            contextMenuTitle: OWSLocalizedString("CONTEXT_MENU_TRANSLATE", comment: "Context menu button title for translating a message"),
+            contextMenuAttributes: [],
+            block: { [weak delegate] _ in
+                delegate?.messageActionsTranslateItem(itemViewModel)
+            },
+        )
+    }
+
     static func endPoll(
         itemViewModel: CVItemViewModelImpl,
         delegate: MessageActionsDelegate,
@@ -289,6 +304,11 @@ class MessageActions: NSObject {
             } else if UIAccessibility.isSpeakSelectionEnabled {
                 let speakAction = MessageActionBuilder.speakMessage(itemViewModel: itemViewModel, delegate: delegate)
                 actions.append(speakAction)
+            }
+
+            if #available(iOS 26.0, *) {
+                let translateAction = MessageActionBuilder.translateMessage(itemViewModel: itemViewModel, delegate: delegate)
+                actions.append(translateAction)
             }
         }
 
