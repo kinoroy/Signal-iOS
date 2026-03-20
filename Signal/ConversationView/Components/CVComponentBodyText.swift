@@ -19,11 +19,6 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         let hasPendingMessageRequest: Bool
         fileprivate let items: [CVTextLabel.Item]
 
-        // Translation state
-        let translatedText: String?
-        let translationSourceLanguage: String?
-        let isTranslationLoading: Bool
-
         var canUseDedicatedCell: Bool {
             if searchText != nil {
                 return false
@@ -259,11 +254,6 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             items = []
         }
 
-        // Fetch translation state
-        let interactionId = interaction.uniqueId
-        let translationResult = viewStateSnapshot.translationState.getTranslation(for: interactionId)
-        let isTranslationLoading = viewStateSnapshot.translationState.isLoading(for: interactionId)
-
         return State(
             bodyText: bodyText,
             isTextExpanded: isTextExpanded,
@@ -272,9 +262,6 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             shouldUseAttributedText: shouldUseAttributedText,
             hasPendingMessageRequest: hasPendingMessageRequest,
             items: items,
-            translatedText: translationResult?.translatedText,
-            translationSourceLanguage: translationResult?.sourceLanguage,
-            isTranslationLoading: isTranslationLoading,
         )
     }
 
@@ -465,67 +452,6 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
                 measurementKey: Self.measurementKey_stackView,
                 subviews: [bodyTextLabel.view],
             )
-            componentView.wrapperView.addSubview(stackView)
-        }
-
-        // Keep the wrapper informed of body text height so it can place the translation container below it.
-        let bodyTextHeight = cellMeasurement.measurement(key: Self.measurementKey_stackView)?.measuredSize.height ?? 0
-        componentView.wrapperView.bodyTextStackHeight = bodyTextHeight
-
-        // Configure and add translation views separately (not part of measured stack)
-        configureTranslationViews(componentView: componentView)
-    }
-
-    private func configureTranslationViews(componentView: CVComponentViewBodyText) {
-        let translationContainer = componentView.translationContainerView
-        let separatorView = componentView.translationSeparatorView
-        let languageLabel = componentView.translationLanguageLabel
-        let textLabel = componentView.translationTextLabel
-        let loadingLabel = componentView.translationLoadingLabel
-
-        let hasTranslation = bodyTextState.translatedText != nil || bodyTextState.isTranslationLoading
-
-        let wrapperView = componentView.wrapperView
-        if hasTranslation {
-            // Add translation container to the wrapper view (sibling of stackView) if not already there.
-            // BodyTextWrapperView.layoutSubviews positions it below the stack view.
-            if translationContainer.superview != wrapperView {
-                translationContainer.removeFromSuperview()
-                translationContainer.translatesAutoresizingMaskIntoConstraints = true
-                wrapperView.addSubview(translationContainer)
-            }
-        }
-
-        if bodyTextState.isTranslationLoading {
-            translationContainer.isHidden = false
-            separatorView.backgroundColor = .Signal.tertiaryLabel
-            loadingLabel.isHidden = false
-            loadingLabel.text = OWSLocalizedString("TRANSLATION_LOADING", comment: "Loading indicator text while translating a message")
-            loadingLabel.font = .dynamicTypeCaption1
-            loadingLabel.textColor = .Signal.secondaryLabel
-            languageLabel.isHidden = true
-            textLabel.isHidden = true
-        } else if let translatedText = bodyTextState.translatedText,
-                  let sourceLanguage = bodyTextState.translationSourceLanguage {
-            translationContainer.isHidden = false
-            separatorView.backgroundColor = .Signal.tertiaryLabel
-            loadingLabel.isHidden = true
-            languageLabel.isHidden = false
-            textLabel.isHidden = false
-
-            let translatedFromFormat = OWSLocalizedString("TRANSLATION_TRANSLATED_FROM", comment: "Label showing which language the message was translated from. Embeds {{language name}}")
-            languageLabel.text = String(format: translatedFromFormat, sourceLanguage)
-            languageLabel.font = .dynamicTypeCaption1
-            languageLabel.textColor = .Signal.secondaryLabel
-
-            textLabel.text = translatedText
-            textLabel.font = textMessageFont
-            textLabel.textColor = bodyTextColor
-        } else {
-            translationContainer.isHidden = true
-            if translationContainer.superview == wrapperView {
-                translationContainer.removeFromSuperview()
-            }
         }
     }
 
@@ -815,92 +741,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             subviewInfos: [textInfo],
             maxWidth: maxWidth,
         )
-
-        var totalSize = stackMeasurement.measuredSize
-
-        // Add translation height if needed
-        // Note: This will cause the overlap optimization to be skipped, which is correct
-        // when translation is showing (footer should not overlap translation)
-        if bodyTextState.translatedText != nil || bodyTextState.isTranslationLoading {
-            // Expand width if the translation content needs more space than the original text.
-            let minTranslationWidth = measureTranslationMinWidth(maxWidth: maxWidth)
-            totalSize.width = max(totalSize.width, minTranslationWidth)
-            // Measure height using the actual display width so wrapping is computed correctly.
-            totalSize.height += measureTranslationHeight(maxWidth: totalSize.width)
-        }
-
-        return totalSize
-    }
-
-    private func measureTranslationMinWidth(maxWidth: CGFloat) -> CGFloat {
-        var minWidth: CGFloat = 0
-
-        if bodyTextState.isTranslationLoading {
-            let font = UIFont.dynamicTypeCaption1
-            let text = OWSLocalizedString("TRANSLATION_LOADING", comment: "Loading indicator text while translating a message")
-            let size = (text as NSString).boundingRect(
-                with: CGSize(width: maxWidth, height: .greatestFiniteMagnitude),
-                options: .usesLineFragmentOrigin,
-                attributes: [.font: font],
-                context: nil
-            )
-            minWidth = min(maxWidth, ceil(size.width))
-        } else if let translatedText = bodyTextState.translatedText,
-                  let sourceLanguage = bodyTextState.translationSourceLanguage {
-            // Single-line width of the "Translated from X" label
-            let captionFont = UIFont.dynamicTypeCaption1
-            let format = OWSLocalizedString("TRANSLATION_TRANSLATED_FROM", comment: "Label showing which language the message was translated from. Embeds {{language name}}")
-            let labelText = String(format: format, sourceLanguage)
-            let labelSize = (labelText as NSString).boundingRect(
-                with: CGSize(width: maxWidth, height: .greatestFiniteMagnitude),
-                options: .usesLineFragmentOrigin,
-                attributes: [.font: captionFont],
-                context: nil
-            )
-            minWidth = min(maxWidth, ceil(labelSize.width))
-
-            // Single-line width of the translated text (capped at maxWidth)
-            let textFont = textMessageFont
-            let textSize = (translatedText as NSString).boundingRect(
-                with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude),
-                options: .usesLineFragmentOrigin,
-                attributes: [.font: textFont],
-                context: nil
-            )
-            minWidth = max(minWidth, min(maxWidth, ceil(textSize.width)))
-        }
-
-        return minWidth
-    }
-
-    private func measureTranslationHeight(maxWidth: CGFloat) -> CGFloat {
-        // Top padding (8pt) + separator (1pt) + gap below separator (8pt)
-        var height: CGFloat = 8 + 1 + 8
-
-        if bodyTextState.isTranslationLoading {
-            // Loading label height
-            let loadingFont = UIFont.dynamicTypeCaption1
-            height += loadingFont.lineHeight
-        } else if let translatedText = bodyTextState.translatedText {
-            // Language label
-            let captionFont = UIFont.dynamicTypeCaption1
-            height += captionFont.lineHeight
-
-            // Spacing between language label and translated text
-            height += 4
-
-            // Translated text
-            let textFont = textMessageFont
-            let boundingRect = (translatedText as NSString).boundingRect(
-                with: CGSize(width: maxWidth, height: .greatestFiniteMagnitude),
-                options: [.usesLineFragmentOrigin, .usesFontLeading],
-                attributes: [.font: textFont],
-                context: nil
-            )
-            height += ceil(boundingRect.height)
-        }
-
-        return height
+        return stackMeasurement.measuredSize
     }
 
     // MARK: - Events
@@ -973,24 +814,6 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
     fileprivate class BodyTextRootView: ManualStackView {}
 
-    // Wrapper that holds both the body text ManualStackView and the translation container as siblings,
-    // positioning them in layoutSubviews so both are frame-based (no cross-view Auto Layout).
-    fileprivate class BodyTextWrapperView: UIView {
-        var bodyTextStackHeight: CGFloat = 0
-
-        override func layoutSubviews() {
-            super.layoutSubviews()
-            for subview in subviews {
-                if subview is BodyTextRootView {
-                    subview.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bodyTextStackHeight > 0 ? bodyTextStackHeight : bounds.height)
-                } else {
-                    let y = bodyTextStackHeight
-                    subview.frame = CGRect(x: 0, y: y, width: bounds.width, height: bounds.height - y)
-                }
-            }
-        }
-    }
-
     public static func findBodyTextRootView(_ view: UIView) -> UIView? {
         if view is BodyTextRootView {
             return view
@@ -1011,67 +834,20 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
         public weak var componentDelegate: CVComponentDelegate?
 
-        fileprivate let wrapperView = BodyTextWrapperView()
         fileprivate let stackView = BodyTextRootView(name: "bodyText")
 
         public let bodyTextLabel = CVTextLabel()
 
-        // Translation UI components
-        fileprivate let translationContainerView = UIView()
-        fileprivate let translationSeparatorView = UIView()
-        fileprivate let translationLanguageLabel = UILabel()
-        fileprivate let translationTextLabel = UILabel()
-        fileprivate let translationLoadingLabel = UILabel()
-
         public var isDedicatedCellView = false
 
         public var rootView: UIView {
-            wrapperView
+            stackView
         }
 
         init(componentDelegate: CVComponentDelegate) {
             self.componentDelegate = componentDelegate
 
             super.init()
-
-            setupTranslationViews()
-        }
-
-        private func setupTranslationViews() {
-            translationContainerView.isHidden = true
-
-            translationSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-            translationLanguageLabel.translatesAutoresizingMaskIntoConstraints = false
-            translationTextLabel.translatesAutoresizingMaskIntoConstraints = false
-            translationLoadingLabel.translatesAutoresizingMaskIntoConstraints = false
-
-            translationTextLabel.numberOfLines = 0
-
-            translationContainerView.addSubview(translationSeparatorView)
-            translationContainerView.addSubview(translationLanguageLabel)
-            translationContainerView.addSubview(translationTextLabel)
-            translationContainerView.addSubview(translationLoadingLabel)
-
-            NSLayoutConstraint.activate([
-                translationSeparatorView.topAnchor.constraint(equalTo: translationContainerView.topAnchor, constant: 8),
-                translationSeparatorView.leadingAnchor.constraint(equalTo: translationContainerView.leadingAnchor),
-                translationSeparatorView.trailingAnchor.constraint(equalTo: translationContainerView.trailingAnchor),
-                translationSeparatorView.heightAnchor.constraint(equalToConstant: 1),
-
-                translationLanguageLabel.topAnchor.constraint(equalTo: translationSeparatorView.bottomAnchor, constant: 8),
-                translationLanguageLabel.leadingAnchor.constraint(equalTo: translationContainerView.leadingAnchor),
-                translationLanguageLabel.trailingAnchor.constraint(equalTo: translationContainerView.trailingAnchor),
-
-                translationTextLabel.topAnchor.constraint(equalTo: translationLanguageLabel.bottomAnchor, constant: 4),
-                translationTextLabel.leadingAnchor.constraint(equalTo: translationContainerView.leadingAnchor),
-                translationTextLabel.trailingAnchor.constraint(equalTo: translationContainerView.trailingAnchor),
-                translationTextLabel.bottomAnchor.constraint(equalTo: translationContainerView.bottomAnchor),
-
-                translationLoadingLabel.topAnchor.constraint(equalTo: translationSeparatorView.bottomAnchor, constant: 8),
-                translationLoadingLabel.leadingAnchor.constraint(equalTo: translationContainerView.leadingAnchor),
-                translationLoadingLabel.trailingAnchor.constraint(equalTo: translationContainerView.trailingAnchor),
-                translationLoadingLabel.bottomAnchor.constraint(equalTo: translationContainerView.bottomAnchor),
-            ])
         }
 
         public func setIsCellVisible(_ isCellVisible: Bool) {
@@ -1084,11 +860,6 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             }
 
             bodyTextLabel.reset()
-            translationContainerView.isHidden = true
-            translationContainerView.removeFromSuperview()
-            translationTextLabel.text = nil
-            translationLanguageLabel.text = nil
-            translationLoadingLabel.text = nil
         }
     }
 }

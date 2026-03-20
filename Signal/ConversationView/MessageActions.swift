@@ -183,7 +183,7 @@ enum MessageActionBuilder {
         )
     }
 
-    @available(iOS 26.0, *)
+    @available(iOS 17.4, *)
     static func translateMessage(itemViewModel: CVItemViewModelImpl, delegate: MessageActionsDelegate) -> MessageAction {
         MessageAction(
             .translate,
@@ -306,7 +306,7 @@ class MessageActions: NSObject {
                 actions.append(speakAction)
             }
 
-            if #available(iOS 26.0, *) {
+            if #available(iOS 17.4, *) {
                 let translateAction = MessageActionBuilder.translateMessage(itemViewModel: itemViewModel, delegate: delegate)
                 actions.append(translateAction)
             }

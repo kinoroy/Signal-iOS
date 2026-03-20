@@ -14,7 +14,6 @@ struct CVViewStateSnapshot {
     let textExpansion: CVTextExpansion
     let spoilerReveal: SpoilerRevealState.Snapshot
     let messageSwipeActionState: CVMessageSwipeActionState
-    let translationState: CVTranslationState
 
     // We can only measure (configure) with a given ConversationStyle.
     // So we need to capture the ConversationStyle at the time the
@@ -55,7 +54,6 @@ struct CVViewStateSnapshot {
             textExpansion: viewState.textExpansion.copy(),
             spoilerReveal: viewState.spoilerState.revealState.snapshot(),
             messageSwipeActionState: viewState.messageSwipeActionState.copy(),
-            translationState: viewState.translationState.copy(),
             coreState: viewState.asCoreState,
             typingIndicatorsSender: typingIndicatorsSender,
             uiMode: viewState.uiMode,
@@ -75,7 +73,6 @@ struct CVViewStateSnapshot {
             textExpansion: CVTextExpansion(),
             spoilerReveal: spoilerReveal.snapshot(),
             messageSwipeActionState: CVMessageSwipeActionState(),
-            translationState: CVTranslationState(),
             coreState: coreState,
             typingIndicatorsSender: nil,
             uiMode: .normal,

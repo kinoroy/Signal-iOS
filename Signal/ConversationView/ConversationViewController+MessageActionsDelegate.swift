@@ -251,9 +251,8 @@ extension ConversationViewController: MessageActionsDelegate {
     }
 
     func messageActionsTranslateItem(_ itemViewModel: CVItemViewModelImpl) {
-        guard #available(iOS 26.0, *) else { return }
+        guard #available(iOS 17.4, *) else { return }
 
-        let interactionId = itemViewModel.interaction.uniqueId
         guard let bodyText = itemViewModel.displayableBodyText else { return }
 
         let textToTranslate: String
@@ -266,28 +265,7 @@ extension ConversationViewController: MessageActionsDelegate {
             textToTranslate = body.asPlaintext()
         }
 
-        // Mark loading and refresh
-        viewState.translationState.setLoading(for: interactionId)
-        loadCoordinator.enqueueReload()
-
-        // Async translation
-        Task { @MainActor in
-            do {
-                let result = try await TranslationManager.shared.translate(text: textToTranslate)
-                viewState.translationState.setTranslation(
-                    for: interactionId,
-                    result: CVTranslationState.TranslationResult(
-                        translatedText: result.translatedText,
-                        sourceLanguage: result.sourceLanguage,
-                        targetLanguage: result.targetLanguage
-                    )
-                )
-            } catch {
-                viewState.translationState.clearLoading(for: interactionId)
-                Logger.error("Translation failed: \(error)")
-            }
-            loadCoordinator.enqueueReload()
-        }
+        TranslationManager.shared.presentTranslation(for: textToTranslate, from: self)
     }
 
     func messageActionsShowPaymentDetails(_ itemViewModel: CVItemViewModelImpl) {
