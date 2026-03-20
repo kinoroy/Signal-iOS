@@ -278,6 +278,7 @@ extension ConversationViewController: MessageActionsDelegate {
                     for: interactionId,
                     result: CVTranslationState.TranslationResult(
                         translatedText: result.translatedText,
+                        sourceLanguage: result.sourceLanguage,
                         targetLanguage: result.targetLanguage
                     )
                 )

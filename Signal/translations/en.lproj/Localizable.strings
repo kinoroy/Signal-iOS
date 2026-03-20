@@ -9721,8 +9721,8 @@
 /* Loading indicator text while translating a message */
 "TRANSLATION_LOADING" = "Translating...";
 
-/* Label showing which language the message was translated to. Embeds {{language name}} */
-"TRANSLATION_TRANSLATED_TO" = "Translated to %@";
+/* Label showing which language the message was translated from. Embeds {{language name}} */
+"TRANSLATION_TRANSLATED_FROM" = "Translated from %@";
 
 /* Label for the cancel button in an alert or action sheet. */
 "TXT_CANCEL_TITLE" = "Cancel";

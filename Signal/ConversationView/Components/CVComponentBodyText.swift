@@ -21,7 +21,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
 
         // Translation state
         let translatedText: String?
-        let translationTargetLanguage: String?
+        let translationSourceLanguage: String?
         let isTranslationLoading: Bool
 
         var canUseDedicatedCell: Bool {
@@ -273,7 +273,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             hasPendingMessageRequest: hasPendingMessageRequest,
             items: items,
             translatedText: translationResult?.translatedText,
-            translationTargetLanguage: translationResult?.targetLanguage,
+            translationSourceLanguage: translationResult?.sourceLanguage,
             isTranslationLoading: isTranslationLoading,
         )
     }
@@ -506,15 +506,15 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             languageLabel.isHidden = true
             textLabel.isHidden = true
         } else if let translatedText = bodyTextState.translatedText,
-                  let targetLanguage = bodyTextState.translationTargetLanguage {
+                  let sourceLanguage = bodyTextState.translationSourceLanguage {
             translationContainer.isHidden = false
             separatorView.backgroundColor = .Signal.tertiaryLabel
             loadingLabel.isHidden = true
             languageLabel.isHidden = false
             textLabel.isHidden = false
 
-            let translatedToFormat = OWSLocalizedString("TRANSLATION_TRANSLATED_TO", comment: "Label showing which language the message was translated to. Embeds {{language name}}")
-            languageLabel.text = String(format: translatedToFormat, targetLanguage)
+            let translatedFromFormat = OWSLocalizedString("TRANSLATION_TRANSLATED_FROM", comment: "Label showing which language the message was translated from. Embeds {{language name}}")
+            languageLabel.text = String(format: translatedFromFormat, sourceLanguage)
             languageLabel.font = .dynamicTypeCaption1
             languageLabel.textColor = .Signal.secondaryLabel
 

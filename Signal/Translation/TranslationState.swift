@@ -10,10 +10,12 @@ import Foundation
 public class CVTranslationState {
     public struct TranslationResult: Equatable {
         public let translatedText: String
+        public let sourceLanguage: String
         public let targetLanguage: String
 
-        public init(translatedText: String, targetLanguage: String) {
+        public init(translatedText: String, sourceLanguage: String, targetLanguage: String) {
             self.translatedText = translatedText
+            self.sourceLanguage = sourceLanguage
             self.targetLanguage = targetLanguage
         }
     }

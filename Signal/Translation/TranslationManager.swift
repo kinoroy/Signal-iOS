@@ -13,6 +13,7 @@ public class TranslationManager {
 
     public struct TranslationResult {
         public let translatedText: String
+        public let sourceLanguage: String
         public let targetLanguage: String
     }
 
@@ -43,12 +44,17 @@ public class TranslationManager {
         let session = TranslationSession(installedSource: sourceLanguage, target: targetLanguage)
         let response = try await session.translate(text)
 
+        let sourceLanguageName = Locale.current.localizedString(
+            forLanguageCode: sourceLanguage.languageCode?.identifier ?? dominantLanguage.rawValue
+        ) ?? dominantLanguage.rawValue
+
         let targetLanguageName = Locale.current.localizedString(
             forLanguageCode: response.targetLanguage.languageCode?.identifier ?? preferredLanguageCode
         ) ?? preferredLanguageCode
 
         return TranslationResult(
             translatedText: response.targetText,
+            sourceLanguage: sourceLanguageName,
             targetLanguage: targetLanguageName
         )
     }
