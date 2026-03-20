@@ -822,10 +822,55 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
         // Note: This will cause the overlap optimization to be skipped, which is correct
         // when translation is showing (footer should not overlap translation)
         if bodyTextState.translatedText != nil || bodyTextState.isTranslationLoading {
-            totalSize.height += measureTranslationHeight(maxWidth: maxWidth)
+            // Expand width if the translation content needs more space than the original text.
+            let minTranslationWidth = measureTranslationMinWidth(maxWidth: maxWidth)
+            totalSize.width = max(totalSize.width, minTranslationWidth)
+            // Measure height using the actual display width so wrapping is computed correctly.
+            totalSize.height += measureTranslationHeight(maxWidth: totalSize.width)
         }
 
         return totalSize
+    }
+
+    private func measureTranslationMinWidth(maxWidth: CGFloat) -> CGFloat {
+        var minWidth: CGFloat = 0
+
+        if bodyTextState.isTranslationLoading {
+            let font = UIFont.dynamicTypeCaption1
+            let text = OWSLocalizedString("TRANSLATION_LOADING", comment: "Loading indicator text while translating a message")
+            let size = (text as NSString).boundingRect(
+                with: CGSize(width: maxWidth, height: .greatestFiniteMagnitude),
+                options: .usesLineFragmentOrigin,
+                attributes: [.font: font],
+                context: nil
+            )
+            minWidth = min(maxWidth, ceil(size.width))
+        } else if let translatedText = bodyTextState.translatedText,
+                  let sourceLanguage = bodyTextState.translationSourceLanguage {
+            // Single-line width of the "Translated from X" label
+            let captionFont = UIFont.dynamicTypeCaption1
+            let format = OWSLocalizedString("TRANSLATION_TRANSLATED_FROM", comment: "Label showing which language the message was translated from. Embeds {{language name}}")
+            let labelText = String(format: format, sourceLanguage)
+            let labelSize = (labelText as NSString).boundingRect(
+                with: CGSize(width: maxWidth, height: .greatestFiniteMagnitude),
+                options: .usesLineFragmentOrigin,
+                attributes: [.font: captionFont],
+                context: nil
+            )
+            minWidth = min(maxWidth, ceil(labelSize.width))
+
+            // Single-line width of the translated text (capped at maxWidth)
+            let textFont = textMessageFont
+            let textSize = (translatedText as NSString).boundingRect(
+                with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: .greatestFiniteMagnitude),
+                options: .usesLineFragmentOrigin,
+                attributes: [.font: textFont],
+                context: nil
+            )
+            minWidth = max(minWidth, min(maxWidth, ceil(textSize.width)))
+        }
+
+        return minWidth
     }
 
     private func measureTranslationHeight(maxWidth: CGFloat) -> CGFloat {
