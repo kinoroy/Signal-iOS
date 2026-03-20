@@ -20593,7 +20593,6 @@
 				CODE_SIGN_ENTITLEMENTS = SignalNSE/SignalNSE.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -20607,7 +20606,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal.SignalNSE";
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -20644,7 +20642,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "SignalNSE/SignalNSE-AppStore.entitlements";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -20701,7 +20698,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = SignalNSE/SignalNSE.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -20719,7 +20715,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal.SignalNSE";
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -20759,7 +20754,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = SignalNSE/SignalNSE.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -20777,7 +20771,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal.SignalNSE";
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -21255,7 +21248,6 @@
 				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -21271,7 +21263,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal.shareextension";
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -21306,7 +21297,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "SignalShareExtension/SignalShareExtension-AppStore.entitlements";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -21326,7 +21316,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal.shareextension";
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -21457,7 +21446,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -21477,7 +21465,6 @@
 				LLVM_LTO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal";
-
 				PRODUCT_NAME = Signal;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -21572,7 +21559,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -21592,7 +21578,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal.shareextension";
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -21720,7 +21705,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = Signal/test/Assets/input_video.mp4;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -21740,7 +21724,6 @@
 				LLVM_LTO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal";
-
 				PRODUCT_NAME = Signal;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -21835,7 +21818,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = SignalShareExtension/SignalShareExtension.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -21855,7 +21837,6 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal.shareextension";
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -22092,7 +22073,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = Signal/test/Assets/input_video.mp4;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -22111,7 +22091,6 @@
 				LLVM_LTO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal";
-
 				PRODUCT_NAME = Signal;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -22133,7 +22112,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Signal/Signal-AppStore.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
-
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_SOURCE_FILE_NAMES[arch=*]" = Signal/test/Assets/input_video.mp4;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -22153,7 +22131,6 @@
 				LLVM_LTO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(SIGNAL_BUNDLEID_PREFIX).signal";
-
 				PRODUCT_NAME = Signal;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
