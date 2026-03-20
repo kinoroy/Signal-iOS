@@ -829,8 +829,8 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
     }
 
     private func measureTranslationHeight(maxWidth: CGFloat) -> CGFloat {
-        // Separator (1pt) + top padding (8pt)
-        var height: CGFloat = 1 + 8
+        // Top padding (8pt) + separator (1pt) + gap below separator (8pt)
+        var height: CGFloat = 8 + 1 + 8
 
         if bodyTextState.isTranslationLoading {
             // Loading label height
