@@ -54,14 +54,18 @@ class TranslationManager {
     private init() {}
 
     private var activeHostingController: UIHostingController<TranslationHost>?
+    private var activeContinuation: CheckedContinuation<String?, Never>?
 
     func translate(text: String, in viewController: UIViewController) async -> String? {
-        // Remove any previous hosting controller
+        // Cancel any in-flight translation and clean up
         cleanUp()
 
         return await withCheckedContinuation { continuation in
+            self.activeContinuation = continuation
+
             let hostView = TranslationHost(sourceText: text) { [weak self] translatedText in
-                continuation.resume(returning: translatedText)
+                self?.activeContinuation?.resume(returning: translatedText)
+                self?.activeContinuation = nil
                 self?.cleanUp()
             }
 
@@ -77,6 +81,8 @@ class TranslationManager {
     }
 
     private func cleanUp() {
+        activeContinuation?.resume(returning: nil)
+        activeContinuation = nil
         activeHostingController?.willMove(toParent: nil)
         activeHostingController?.view.removeFromSuperview()
         activeHostingController?.removeFromParent()
