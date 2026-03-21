@@ -255,7 +255,7 @@ public class CVComponentBodyText: CVComponentBase, CVComponent {
             items = []
         }
 
-        let translatedText = viewStateSnapshot.translationState.translations[interaction.uniqueId]
+        let translatedText = viewStateSnapshot.translations[interaction.uniqueId]
 
         return State(
             bodyText: bodyText,

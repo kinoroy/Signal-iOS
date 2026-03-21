@@ -165,7 +165,6 @@
 		32ECD08A24BFBF9500EDDED0 /* ContactSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ECD08924BFBF9500EDDED0 /* ContactSupportViewController.swift */; };
 		32FAB92A2727A57100FB76A6 /* PrimaryImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB9292727A57100FB76A6 /* PrimaryImageView.swift */; };
 		336774992F6CC62000B5FCEC /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336774982F6CC62000B5FCEC /* TranslationManager.swift */; };
-		33677B002F6CC62100B5FCEC /* TranslationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33677AFF2F6CC62100B5FCEC /* TranslationState.swift */; };
 		3402A9DA271D953B0084CBAE /* SUIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3402A9D9271D953A0084CBAE /* SUIEnvironment.swift */; };
 		3402A9E8271D97090084CBAE /* UIView+SignalUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3402A9E5271D97090084CBAE /* UIView+SignalUI.swift */; };
 		3402AA02271D9DAF0084CBAE /* GroupViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A95507271B510400B05242 /* GroupViewUtils.swift */; };
@@ -4336,7 +4335,6 @@
 		32ECD08924BFBF9500EDDED0 /* ContactSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSupportViewController.swift; sourceTree = "<group>"; };
 		32FAB9292727A57100FB76A6 /* PrimaryImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryImageView.swift; sourceTree = "<group>"; };
 		336774982F6CC62000B5FCEC /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
-		33677AFF2F6CC62100B5FCEC /* TranslationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationState.swift; sourceTree = "<group>"; };
 		3402A9D9271D953A0084CBAE /* SUIEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUIEnvironment.swift; sourceTree = "<group>"; };
 		3402A9E0271D96570084CBAE /* UIView+OWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+OWS.swift"; sourceTree = "<group>"; };
 		3402A9E5271D97090084CBAE /* UIView+SignalUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SignalUI.swift"; sourceTree = "<group>"; };
@@ -8612,7 +8610,6 @@
 			isa = PBXGroup;
 			children = (
 				336774982F6CC62000B5FCEC /* TranslationManager.swift */,
-				33677AFF2F6CC62100B5FCEC /* TranslationState.swift */,
 			);
 			path = Translation;
 			sourceTree = "<group>";
@@ -18548,7 +18545,6 @@
 				881218F0238CA51600E6F271 /* MessageReactionPicker.swift in Sources */,
 				88D1D40222EBB5A100F472C5 /* MessageRequestView.swift in Sources */,
 				336774992F6CC62000B5FCEC /* TranslationManager.swift in Sources */,
-				33677B002F6CC62100B5FCEC /* TranslationState.swift in Sources */,
 				34EB0E722629DC2B00B62DC3 /* MessageSelectionView.swift in Sources */,
 				34EB0CEB26289D8800B62DC3 /* MessageTimerView.swift in Sources */,
 				8829883C25B9FD9E00DEE1E3 /* MockConversationView.swift in Sources */,
