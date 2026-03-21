@@ -1,11 +1,12 @@
 //
-// Copyright 2024 Signal Messenger, LLC
+// Copyright 2026 Signal Messenger, LLC
 // SPDX-License-Identifier: AGPL-3.0-only
 //
 
 import SwiftUI
 import Translation
 import NaturalLanguage
+import SignalServiceKit
 
 @available(iOS 18.0, *)
 private struct TranslationHost: View {
@@ -23,9 +24,7 @@ private struct TranslationHost: View {
                         onTranslation(response.targetText)
                     }
                 } catch {
-                    await MainActor.run {
-                        print("Translation failed: \(error)")
-                    }
+                    Logger.error("Translation failed: \(error)")
                 }
             }
             .onAppear {
